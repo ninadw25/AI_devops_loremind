@@ -1,0 +1,272 @@
+<title>Research Study AI DEVOPS</title>
+<style>
+/* Layout: a lab notebook. Rubric index first, then one section per criterion, each ending in the evidence you can open. */
+:root{
+  --bg:#f5f6f3; --panel:#ffffff; --fg:#16201b; --muted:#59645d; --line:#dce1db; --soft:#eef1ec;
+  --accent:#0b6b5a; --accent-soft:#e0f0eb; --win:#1c7a3f; --win-bg:#e2f3e7; --lose:#a5281f; --lose-bg:#fbe5e1;
+  --warn:#8f5c00; --warn-bg:#fbefd6;
+  --f-display:"Bricolage Grotesque",system-ui,sans-serif; --f-body:"IBM Plex Sans",system-ui,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1512; --panel:#161e1a; --fg:#e5ebe7; --muted:#97a39b; --line:#2a352f; --soft:#1c2621;
+  --accent:#5fd0b4; --accent-soft:#15312a; --win:#6fd48f; --win-bg:#15301f; --lose:#ff8f84; --lose-bg:#3a1a17;
+  --warn:#f0b955; --warn-bg:#352a12; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1512; --panel:#161e1a; --fg:#e5ebe7; --muted:#97a39b; --line:#2a352f; --soft:#1c2621;
+  --accent:#5fd0b4; --accent-soft:#15312a; --win:#6fd48f; --win-bg:#15301f; --lose:#ff8f84; --lose-bg:#3a1a17;
+  --warn:#f0b955; --warn-bg:#352a12; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.55;padding-inline:16px;padding-block:24px 64px}
+.wrap{max-width:1080px;margin-inline:auto;display:grid;gap:40px}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.15;text-wrap:balance}
+h1{font-size:clamp(30px,5vw,48px);letter-spacing:-.02em}
+h2{font-size:24px}
+h3{font-size:16px}
+p{margin:0}
+a{color:var(--accent)}
+.lede{color:var(--muted);max-width:70ch;margin-top:10px;font-size:16px}
+.rub{font-family:var(--f-mono);font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em}
+section{display:grid;gap:14px;min-width:0;scroll-margin-top:16px}
+.sechead{display:grid;gap:6px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.tw{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:500}
+tr:last-child td{border-bottom:0}
+td.n{text-align:right;font-family:var(--f-mono);font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{font-family:var(--f-mono);font-size:12.5px;background:var(--soft);padding:1px 5px;border-radius:3px;overflow-wrap:anywhere}
+.chip{display:inline-block;font-family:var(--f-mono);font-size:11px;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.win{background:var(--win-bg);color:var(--win)} .lose{background:var(--lose-bg);color:var(--lose)} .warn{background:var(--warn-bg);color:var(--warn)} .neutral{background:var(--soft);color:var(--muted)}
+.chain{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 14px;min-width:0}
+.step b{display:block;font-family:var(--f-mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.note{background:var(--accent-soft);border-radius:6px;padding:12px 14px;font-size:14px}
+.note.warn{background:var(--warn-bg)}
+ul{margin:4px 0 0;padding-left:20px} li{margin:4px 0}
+pre{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 14px;overflow-x:auto;font-family:var(--f-mono);font-size:12.5px;line-height:1.6}
+.idx{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.idx a{display:block;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px 12px;text-decoration:none;color:var(--fg)}
+.idx a span{display:block;font-family:var(--f-mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.bar{display:grid;grid-template-columns:150px 1fr 56px;gap:10px;align-items:center;font-size:13px}
+.bar .t{height:12px;background:var(--soft);border-radius:4px;position:relative}
+.bar .t i{position:absolute;inset:0 auto 0 0;border-radius:4px;background:var(--accent)}
+.bar .t i.base{background:var(--muted);opacity:.6}
+.bar .v{font-family:var(--f-mono);font-size:12px;text-align:right}
+.bars{display:grid;gap:7px}
+footer{color:var(--muted);font-size:13px}
+@media (max-width:540px){.bar{grid-template-columns:110px 1fr 48px}}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<div class="wrap">
+<header>
+  <div class="rub">CSE 4011 · Intelligent Developer Tools and AI DevOps</div>
+  <h1>Lore GraphRAG Evaluation</h1>
+  <p class="lede">Does an ontology-typed knowledge graph retrieve better than plain vector RAG over a company's email, and where does it fail? Lore was built with a real client, EZO Books, on their real email and code history. This page is the evidence, criterion by criterion.</p>
+</header>
+
+<nav class="idx" aria-label="Rubric criteria">
+  <a href="#rq"><span>1 · Research question</span>Question, hypotheses, experiment design</a>
+  <a href="#lr"><span>Literature review</span>9 sources: what we built and measured, what shaped the method</a>
+  <a href="#eval"><span>2 · Quantitative evaluation</span>Data, baselines, metrics, statistics</a>
+  <a href="#results"><span>3 · Results</span>Lore against vector RAG, interpretation</a>
+  <a href="#ablation"><span>Ablation study</span>2×2: reranker × LLM query analysis</a>
+  <a href="#impl"><span>4 · Technical implementation</span>Pipeline, models, automation, deployment</a>
+  <a href="#limits"><span>5 · Limitations and failures</span>What breaks, bias, sources of error</a>
+  <a href="#repro"><span>6 · Reproducibility</span>Setup, configuration, commands</a>
+</nav>
+
+<!-- 1 ─────────────────────────────────────────────────────────────── -->
+<section id="rq">
+  <div class="sechead"><div class="rub">1 · Research question and experimental alignment</div><h2>One question, three falsifiable hypotheses</h2></div>
+  <div class="chain">
+    <div class="step"><b>Problem</b>Company decisions live in email threads. People ask "why was X decided" or "what did Y decide about Z", and the answer's text often does not name the person or decision asked about.</div>
+    <div class="step"><b>Objective</b>Retrieve the exact facts, decisions and tasks that answer such questions, with sources, for one real company.</div>
+    <div class="step"><b>Method</b>LLM-extracted typed knowledge graph (7 node types, typed edges) plus graph-expansion retrieval, compared with vector RAG on the same embeddings.</div>
+    <div class="step"><b>Experiment</b>Two test sets that separate relation questions (where the graph should help) from single-email lookups (where it should not).</div>
+  </div>
+  <div class="tw"><table>
+    <tr><th>Hypothesis</th><th>Prediction</th><th>Tested by</th><th>Outcome</th></tr>
+    <tr><td><b>H1</b> The graph helps when the answer is connected by an edge, not by shared words</td><td>Lore beats vector RAG on relation questions</td><td>55 graph questions, node recall@10</td><td><span class="chip win">supported</span></td></tr>
+    <tr><td><b>H2</b> The graph does not help single-hop lookups</td><td>Vector RAG matches or beats Lore when the answer is one email</td><td>60 single-email questions, hit@10</td><td><span class="chip win">supported</span></td></tr>
+    <tr><td><b>H3</b> The graph costs latency</td><td>Lore is several times slower</td><td>median latency, both tests</td><td><span class="chip win">supported</span></td></tr>
+  </table></div>
+</section>
+
+<!-- LR ─────────────────────────────────────────────────────────────── -->
+<section id="lr">
+  <div class="sechead"><div class="rub">Literature review · supports criterion 1</div><h2>From the scouted research to what Lore actually uses</h2></div>
+  <p class="lede" style="margin-top:0">We scouted GraphRAG, retrieval and evaluation work while designing Lore, then scoped it down. The architecture is our own, shaped with our client on their email; each source below is marked by what it contributed and how we measured it.</p>
+  <div class="chain">
+    <div class="step"><b>Built and measured · 5</b>The idea is in the code and an experiment on this page isolates its effect.</div>
+    <div class="step"><b>Shaped the method · 4</b>Used to design the tests and classify failures, not built into the system.</div>
+  </div>
+
+  <h3>Built and measured</h3>
+  <div class="tw"><table>
+    <tr><th>Source</th><th>Idea</th><th>Our implementation</th><th>Measured effect</th></tr>
+    <tr><td>Lewis et al. 2020, RAG (arXiv:2005.11401)</td><td>Retrieve, then generate an answer grounded in the retrieved text</td><td>Token-budgeted context and a streamed answer with cited sources (<code>services/query_service.py</code>)</td><td>The whole system; both baselines are this idea without the graph</td></tr>
+    <tr><td>Ontology-guided KG construction (arXiv:2511.05991; OMD-GraphRAG, arXiv:2603.25152)</td><td>Extract into a fixed typed schema, not free-form triples</td><td>7 node types, typed predicates, deterministic validator before any write (lore-ingestion <code>pipeline/triple_extractor.py</code>, <code>pipeline/validator.py</code>)</td><td>Node-level vector RAG over the same extracted nodes scores 0.14 against 0.40 for Lore, so the typed edges, not extraction alone, carry the gain</td></tr>
+    <tr><td>Edge et al. 2024, GraphRAG local search (arXiv:2404.16130)</td><td>Entity-centred retrieval over the graph neighbourhood</td><td>Vector seeds, then beam expansion over typed edges with relation weights and hop penalties (<code>domain/retrieval/frontier.py</code>)</td><td>Test A +0.26 node recall@10, 95% CI [+0.13, +0.40]</td></tr>
+    <tr><td>MS MARCO cross-encoders, via FlashRank</td><td>Rerank cheap candidates with a cross-encoder</td><td><code>ms-marco-MiniLM-L-12-v2</code>; final score 0.7 rerank + 0.3 hybrid (<code>domain/retrieval/rank.py</code>)</td><td>Ablation: +0.27 hit@10 on lookups, +0.09 on tasks of a person</td></tr>
+    <tr><td>Alshahwan et al. 2024, TestGen-LLM (arXiv:2402.09171); Qodo Cover</td><td>Keep an LLM-written test only if it passes and raises coverage</td><td><code>tools/gen_tests.py</code>; Qodo Cover is archived, so we reimplemented its loop</td><td>3 of 4 modules kept: coverage 40.6→100, 40.8→100, 61.9→100; 1 rejected with no gain</td></tr>
+  </table></div>
+
+  <h3>Shaped the method</h3>
+  <div class="tw"><table>
+    <tr><th>Source</th><th>What it says</th><th>How we used it</th></tr>
+    <tr><td>Han et al. 2025, RAG vs. GraphRAG (arXiv:2502.11371)</td><td>RAG wins single-hop detail; GraphRAG wins multi-hop</td><td>Hypotheses H1 and H2 and the two-test design. Our results reproduce the pattern on private email</td></tr>
+    <tr><td>GraphRAG-Bench, "When to use graphs in RAG" (arXiv:2506.05690)</td><td>Graphs often underperform vanilla RAG; gains depend on question type</td><td>Report results per question family, never only an average</td></tr>
+    <tr><td>Peng et al. 2024, Graph RAG survey (arXiv:2408.08921)</td><td>Taxonomy: graph indexing, graph-guided retrieval, graph-enhanced generation</td><td>Placing Lore: typed-KG indexing with graph-guided retrieval and text generation</td></tr>
+    <tr><td>Barnett et al. 2024, seven RAG failure points (arXiv:2401.05856)</td><td>Checklist of where RAG systems fail</td><td>Classifying every failure in section 5</td></tr>
+  </table></div>
+
+</section>
+
+<!-- 2 ─────────────────────────────────────────────────────────────── -->
+<section id="eval">
+  <div class="sechead"><div class="rub">2 · Quantitative evaluation</div><h2>Two test sets, three systems, paired statistics</h2></div>
+  <div class="tw"><table>
+    <tr><th>Corpus</th><th class="n">Count</th></tr>
+    <tr><td>Email threads that produced knowledge</td><td class="n">11,584</td></tr>
+    <tr><td>Knowledge nodes (Decision, Task, Fact, Event)</td><td class="n">27,063</td></tr>
+    <tr><td>Person nodes / Topic nodes</td><td class="n">13,562 / 3,609</td></tr>
+    <tr><td>Typed relationships</td><td class="n">85,392</td></tr>
+  </table></div>
+  <div class="chain">
+    <div class="step"><b>Test A · 55 graph questions</b>Generated from the graph by three templates: tasks assigned to a person (15), why a decision was made (20), what a person decided on a topic (20). Ground truth is the Cypher result for that pattern, so neither system grades itself.</div>
+    <div class="step"><b>Test B · 60 single-email lookups</b>An LLM wrote one question from one email each; ground truth is that email's thread. A control: the graph should not help here.</div>
+    <div class="step"><b>Baselines</b>Raw-email RAG and node-level RAG (LangChain + FAISS) with the same embedding model as Lore. Node-level RAG isolates graph structure from the extraction step.</div>
+    <div class="step"><b>Metrics</b>Node recall@10 = correct nodes found / min(correct nodes, 10); thread recall@10; hit@1/5/10 and MRR@10; median and p95 latency. Paired bootstrap 95% intervals, 5,000 resamples over questions.</div>
+  </div>
+  <h3>Golden evaluation set: the fixed baseline</h3>
+  <p>Before any system ran, both test sets were built once and frozen as versioned files. Every number on this page (both baselines, the main run and all four ablation cells) is scored against these same 115 questions and the same answer labels, so a change in score comes from the system, not from the questions.</p>
+  <div class="tw"><table>
+    <tr><th>Golden file</th><th class="n">Questions</th><th class="n">Labelled answers</th><th>How each label was fixed</th></tr>
+    <tr><td><code>graph_questions.json</code> (Test A)</td><td class="n">55</td><td class="n">268 nodes</td><td>The Cypher traversal for the question's pattern, stored with the question. Tasks of a person: 144 answers, 3 to 18 per question. Why decided: 24, 1 to 3 per question. Person on topic: 100, 3 to 13 per question</td></tr>
+    <tr><td><code>questions.json</code> (Test B)</td><td class="n">60</td><td class="n">60 threads</td><td>The email thread the question was written from, using the raw email rather than the graph, so extraction errors count against Lore</td></tr>
+  </table></div>
+  <ul>
+    <li><b>Ambiguity removed:</b> a person named in a question must have a unique name in the graph, and answers to the two person families must span at least two threads.</li>
+    <li><b>Answerable only:</b> answers are limited to nodes the engine is allowed to serve, and lookup threads need at least 500 characters and three extracted facts.</li>
+    <li><b>Rebuildable:</b> fixed seeds (7 for Test A, 42 for Test B) regenerate the identical set from the same graph (<code>make_graph_questions.py</code>, <code>make_dataset.py</code>).</li>
+  </ul>
+</section>
+
+<!-- 3 ─────────────────────────────────────────────────────────────── -->
+<section id="results">
+  <div class="sechead"><div class="rub">3 · Results and interpretation</div><h2>The graph wins where answers sit on edges, and loses simple lookups</h2></div>
+  <div class="tw"><table>
+    <tr><th>Test A · node recall@10</th><th class="n">tasks of a person (15)</th><th class="n">why decided (20)</th><th class="n">person on topic (20)</th><th class="n">all (55)</th></tr>
+    <tr><td>Vector RAG over nodes</td><td class="n">0.03</td><td class="n">0.35</td><td class="n">0.01</td><td class="n">0.14</td></tr>
+    <tr><td><b>Lore</b></td><td class="n">0.10</td><td class="n">0.65</td><td class="n">0.38</td><td class="n"><b>0.40</b></td></tr>
+    <tr><td>Lore minus vector RAG, 95% CI</td><td class="n">+0.08 [+0.02, +0.15]</td><td class="n">+0.30 [−0.05, +0.60]</td><td class="n">+0.37 [+0.19, +0.56]</td><td class="n"><b>+0.26 [+0.13, +0.40]</b></td></tr>
+  </table></div>
+  <div class="tw"><table>
+    <tr><th>Test B · 60 single-email lookups</th><th class="n">hit@1</th><th class="n">hit@10</th><th class="n">MRR@10</th><th class="n">median latency</th></tr>
+    <tr><td>Vector RAG (LangChain + FAISS)</td><td class="n">0.47</td><td class="n"><b>0.75</b></td><td class="n">0.56</td><td class="n">0.5 s</td></tr>
+    <tr><td>Lore</td><td class="n">0.28</td><td class="n">0.40</td><td class="n">0.33</td><td class="n">5.9 s</td></tr>
+  </table></div>
+    <h3>Interpretation</h3>
+  <ul>
+    <li><b>Why the graph wins Test A.</b> Only 4% of the correct task texts contain any part of the person's name, so text similarity cannot find them; the graph reaches them through the ASSIGNED_TO edge. "Why" questions find the right thread either way, but Lore returns the justifying Fact almost twice as often (0.65 against 0.35) by following BECAUSE edges.</li>
+    <li><b>Why it loses Test B.</b> In a single-email lookup the question and the answer share wording, which is exactly what embeddings match. The ablation locates the cost in the LLM query analysis (−0.23). Our reading, not yet tested directly, is that it steers retrieval towards people and relations, so the source email drops out of the top 10. With the keyword fallback Lore reaches 0.63, still below vector RAG at 0.75.</li>
+    <li><b>Where we do not claim a result.</b> The "why decided" gain has an interval touching zero, so it is a trend on 20 questions, not a finding.</li>
+    <li><b>Latency.</b> About 8 s median for Lore against 0.35 s for vector search: query analysis, expansion, rerank and an LLM call.</li>
+  </ul>
+</section>
+
+<!-- ABLATION ─────────────────────────────────────────────────────────── -->
+<section id="ablation">
+  <div class="sechead"><div class="rub">Ablation study · supports criteria 3 and 5</div><h2>Which component causes what: reranker × LLM query analysis</h2></div>
+  <div class="tw"><table>
+    <tr><th>Factor</th><th>On</th><th>Off</th><th>How it is switched</th></tr>
+    <tr><td>Cross-encoder reranker</td><td>FlashRank MiniLM-L-12</td><td>hybrid order only</td><td><code>RERANK_PROVIDER=none</code></td></tr>
+    <tr><td>LLM query analysis</td><td>intent, entities and topics from Claude 3.5 Sonnet</td><td>deterministic keyword analysis</td><td><code>ANALYSIS_TIMEOUT_MS=1</code></td></tr>
+    <tr><td colspan="4">Held fixed: graph, embeddings, beam width and depth, k = 10, the 55 Test A and 60 Test B questions. Each cell runs both tests; effects are paired bootstraps over the same questions.</td></tr>
+  </table></div>
+  <p style="color:var(--muted);max-width:75ch">Two query-time components switched on and off, same questions, same graph. LLM analysis off means the deterministic keyword fallback (<code>ANALYSIS_TIMEOUT_MS=1</code>; all 115 queries fell back). The reranker-off, keyword cell is the 6 October run, when the reranker was not installed and an 800 ms timeout made the analysis fall back almost every time.</p>
+  <div class="tw"><table>
+    <tr><th>Configuration</th><th class="n">Test A all</th><th class="n">tasks of a person</th><th class="n">why decided</th><th class="n">person on topic</th><th class="n">Test B hit@10</th></tr>
+    <tr><td><b>Rerank on, LLM analysis</b> (shipped)</td><td class="n"><b>0.40</b></td><td class="n">0.10</td><td class="n">0.65</td><td class="n"><b>0.38</b></td><td class="n">0.40</td></tr>
+    <tr><td>Rerank off, LLM analysis</td><td class="n">0.40</td><td class="n">0.01</td><td class="n">0.70</td><td class="n">0.39</td><td class="n">0.13</td></tr>
+    <tr><td>Rerank on, keyword analysis</td><td class="n">0.28</td><td class="n">0.08</td><td class="n">0.65</td><td class="n">0.06</td><td class="n"><b>0.63</b></td></tr>
+    <tr><td>Rerank off, keyword analysis (6 Oct)</td><td class="n">0.31</td><td class="n">0.20</td><td class="n">0.70</td><td class="n">0.01</td><td class="n">0.63</td></tr>
+  </table></div>
+  <div class="tw"><table>
+    <tr><th>Effect, paired 95% CI</th><th class="n">Test B hit@10</th><th class="n">person on topic</th><th class="n">tasks of a person</th><th class="n">Test A all</th></tr>
+    <tr><td>Adding LLM analysis (rerank on)</td><td class="n"><span class="chip lose">−0.23 [−0.35, −0.12]</span></td><td class="n"><span class="chip win">+0.32 [+0.14, +0.50]</span></td><td class="n">+0.02 [0.00, +0.06]</td><td class="n"><span class="chip win">+0.12 [+0.02, +0.23]</span></td></tr>
+    <tr><td>Adding the reranker (LLM analysis on)</td><td class="n"><span class="chip win">+0.27 [+0.17, +0.38]</span></td><td class="n">−0.01 [−0.08, +0.05]</td><td class="n"><span class="chip win">+0.09 [+0.05, +0.14]</span></td><td class="n">0.00 [−0.07, +0.07]</td></tr>
+  </table></div>
+  <div class="note"><b>What the ablation shows.</b> The LLM query analysis is the trade-off at the heart of the system: it is what makes "what did this person decide about this topic" answerable (+0.32), and it is also what costs single-email lookups (−0.23). The reranker repairs part of that cost (+0.27 on lookups) and helps "tasks of a person". No single configuration wins both tests, so the next step is to route by question type: lookup-style questions to the keyword and vector path, relationship questions through the analysis and graph path.</div>
+  <div class="tw"><table>
+    <tr><th>Configuration</th><th class="n">Test B hit@1</th><th class="n">Test B MRR@10</th><th class="n">Test A median</th><th class="n">Test B median</th></tr>
+    <tr><td>Rerank on, LLM analysis</td><td class="n">0.28</td><td class="n">0.33</td><td class="n">8.0 s</td><td class="n">5.9 s</td></tr>
+    <tr><td>Rerank off, LLM analysis</td><td class="n">0.05</td><td class="n">0.07</td><td class="n">7.0 s</td><td class="n">5.0 s</td></tr>
+    <tr><td>Rerank on, keyword analysis</td><td class="n">0.45</td><td class="n">0.51</td><td class="n">6.4 s</td><td class="n">5.1 s</td></tr>
+    <tr><td>Rerank off, keyword analysis (6 Oct)</td><td class="n">0.45</td><td class="n">0.51</td><td class="n">7.2 s</td><td class="n">5.4 s</td></tr>
+  </table></div>
+  <div class="note warn"><b>Interaction.</b> With keyword analysis the reranker changes nothing on lookups: effect 0.00, and 52 of 60 questions keep the same rank. It only matters once LLM analysis widens the candidate set, where it recovers +0.27. The two components cannot be judged separately, which is why this is a 2×2 and not two one-at-a-time switches.</div>
+  <p style="color:var(--muted);font-size:13px">Cells reproduce with <code>python -m benchmarks.rag_eval.ablation</code> (writes <code>results/ablation.json</code>). The fourth cell is the 6 October run, approximate as described above.</p>
+</section>
+
+<!-- 4 ─────────────────────────────────────────────────────────────── -->
+<section id="impl">
+  <div class="sechead"><div class="rub">4 · Technical implementation</div><h2>What runs, end to end</h2></div>
+  <div class="tw"><table>
+    <tr><th>Stage</th><th>Implementation</th></tr>
+    <tr><td>Ingestion</td><td>Per-source pipelines (Gmail, Slack, Jira, GitLab). Gmail: signal-based filter, identity resolution, LLM triple extraction into the ontology, deterministic validation, ACL scopes on every node.</td></tr>
+    <tr><td>Store</td><td>Neo4j 5.26 knowledge graph with 2048-d node embeddings; Postgres with pgvector for chat memory and the GitLab code index.</td></tr>
+    <tr><td>Query</td><td>Scope gate, LLM query analysis, vector seeds (top 30, <code>nemotron-3-embed-1b</code>), beam expansion (width 30, depth 3), FlashRank rerank, 8,000-token context, streamed answer by Claude 3.5 Sonnet on AWS Bedrock with cited sources.</td></tr>
+    <tr><td>Interface</td><td>"Ask Lore" chat with source cards, plus a GitLab code-question mode.</td></tr>
+    <tr><td>Automation</td><td>GitLab CI: lint, security scans, unit tests with a 65% coverage gate, image build, deploy. LLM test generation kept only on coverage gain. One-command local demo. Terraform for the cloud deployment.</td></tr>
+  </table></div>
+  <p>Diagrams: <a href="https://claude.ai/artifact/MLAd9yTDmmnGqu5XqpwcP5">ingestion pipeline</a> · <a href="https://claude.ai/artifact/3CDQ5fE3ZX4LEpiAp7pjYP">query pipeline</a> · <a href="https://claude.ai/artifact/AR1Nj9xoGnrB7KNBZxBTtC">deployment and CI/CD</a></p>
+</section>
+
+<!-- 5 ─────────────────────────────────────────────────────────────── -->
+<section id="limits">
+  <div class="sechead"><div class="rub">5 · Limitations and failure analysis</div><h2>What does not work, and why we think so</h2></div>
+  <div class="tw"><table>
+    <tr><th>Failure</th><th>Evidence</th><th>Failure point (Barnett et al.)</th><th>Cause</th></tr>
+    <tr><td>Single-email lookups</td><td>hit@10 0.40 against 0.75 for vector RAG</td><td>Missed top-ranked documents</td><td>Measured: LLM query analysis costs −0.23; the reranker recovers +0.27. Fix proposed: route lookups away from the analysis path</td></tr>
+    <tr><td>"Tasks of a person"</td><td>node recall 0.10; 18 correct tasks for one person, only 10 slots</td><td>Not in context</td><td>Hypothesis, not yet tested: person hubs have hundreds of edges and the beam keeps 30</td></tr>
+    <tr><td>Recency and code questions</td><td>"most recent change" cannot be answered</td><td>Missing content</td><td>The code index has no usable commit dates</td></tr>
+  </table></div>
+  <h3>Threats to validity</h3>
+  <ul>
+    <li>Ground truth comes from the same LLM-extracted graph, so an extraction error counts as truth, and the templates favour the structure the graph encodes.</li>
+    <li>One organisation; 15 to 20 questions per family, so several intervals are wide.</li>
+    <li>Retrieval is measured, answer quality is not: there is no human-judged answer score.</li>
+    <li>The client's data is private, so questions are regenerated from the graph rather than published.</li>
+  </ul>
+</section>
+
+<!-- 6 ─────────────────────────────────────────────────────────────── -->
+<section id="repro">
+  <div class="sechead"><div class="rub">6 · Methodology and reproducibility</div><h2>Configuration and commands</h2></div>
+  <div class="tw"><table>
+    <tr><th>Setting</th><th>Value</th></tr>
+    <tr><td>Answer model</td><td>Claude 3.5 Sonnet v2, AWS Bedrock (apac inference profile)</td></tr>
+    <tr><td>Embeddings</td><td><code>nvidia/nemotron-3-embed-1b</code>, 2048-d, same for Lore and the baselines</td></tr>
+    <tr><td>Retrieval</td><td>k = 10, vector seeds 30, beam width 30, depth 3, analysis timeout 4,000 ms</td></tr>
+    <tr><td>Rerank</td><td>FlashRank <code>ms-marco-MiniLM-L-12-v2</code>; <code>RERANK_PROVIDER=none</code> for the ablation</td></tr>
+    <tr><td>Query analysis</td><td>LLM analysis with a 4,000 ms timeout; <code>ANALYSIS_TIMEOUT_MS=1</code> forces the keyword fallback for the ablation</td></tr>
+    <tr><td>Lexical</td><td>The evaluation ran without <code>rank-bm25</code> (logged by the engine); both reranker conditions share this, the container image includes it</td></tr>
+    <tr><td>Statistics</td><td>Paired bootstrap, 5,000 resamples, seed 0</td></tr>
+  </table></div>
+<pre>scripts/demo_up.sh                                         # Neo4j, Postgres, engine :8000, UI :5173
+python -m benchmarks.rag_eval.make_graph_questions         # Test A from the graph (Cypher ground truth)
+python -m benchmarks.rag_eval.run_graph_eval --systems raw_rag node_rag lore
+python -m benchmarks.rag_eval.run_eval                     # Test B
+RERANK_PROVIDER=none uvicorn api.main:app --port 8001      # ablation engine
+ENGINE_URL=http://localhost:8001 EVAL_TAG=_rerank_off python -m benchmarks.rag_eval.run_eval
+ANALYSIS_TIMEOUT_MS=1 uvicorn api.main:app --port 8002    # keyword-analysis engine (EVAL_TAG=_keyword_analysis)
+python -m benchmarks.rag_eval.ablation                     # 2x2 ablation with paired intervals
+python -m benchmarks.rag_eval.report                       # tables and bootstrap intervals
+pytest tests -q --cov=domain --cov=services --cov=api      # 306 passed, 1 skipped
+deploy/oneday/up.sh &amp;&amp; deploy/oneday/up.sh apply          # one-day AWS deployment (Terraform)</pre>
+</section>
+
+<footer>All numbers come from the result files in <code>benchmarks/rag_eval/results/</code> in the project repository; runs of 7 and 28 October 2026.</footer>
+</div>

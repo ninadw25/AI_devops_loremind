@@ -1,0 +1,113 @@
+name: Jira Smoke
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  jira-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+
+      - name: Install project
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: Run pipeline tests
+        run: |
+          python -m unittest discover -s pipeline/tests -p 'test_*.py'
+
+      - name: Run Jira tests
+        run: |
+          python -m unittest discover -s infra/jira/tests -p 'test_*.py'
+
+  jira-pr-smoke:
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+
+      - name: Install project
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: Run deterministic Jira smoke
+        run: |
+          python scripts/jira_pr_smoke.py
+
+  jira-e2e:
+    if: ${{ secrets.RUN_JIRA_E2E == 'true' }}
+    needs: jira-tests
+    runs-on: ubuntu-latest
+    services:
+      neo4j:
+        image: neo4j:5.11
+        env:
+          NEO4J_AUTH: "neo4j/lorepassword"
+        ports:
+          - 7687:7687
+          - 7474:7474
+        options: >-
+          --health-cmd='curl -f http://localhost:7474 || exit 1'
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+
+      - name: Install project + neo4j driver
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+          pip install neo4j
+
+      - name: Wait for Neo4j
+        run: |
+          python - <<'PY'
+          import time
+          from neo4j import GraphDatabase
+          uri='bolt://localhost:7687'
+          for i in range(30):
+              try:
+                  GraphDatabase.driver(uri, auth=('neo4j','lorepassword')).verify_connectivity()
+                  print('neo4j ready')
+                  break
+              except Exception as e:
+                  print('waiting for neo4j...', i)
+                  time.sleep(2)
+          else:
+              raise SystemExit('neo4j did not start')
+          PY
+
+      - name: Generate Cypher (passes 0-2)
+        run: |
+          python -m builders.unified_builder --org ezobooks --skip-upload
+
+      - name: Apply Cypher and run E2E tests
+        run: |
+          python scripts/apply_cypher_and_count.py
+          python -m unittest infra.jira.tests.test_e2e_neo4j -v

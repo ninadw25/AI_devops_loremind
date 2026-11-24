@@ -1,0 +1,128 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/conversations.history",
+    "queryParameters": {
+      "channel": {
+        "equalTo": "C34567890"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "ok": true,
+      "messages": [
+        {
+          "ts": "1780176656.971084",
+          "user": "UIUC039TE",
+          "text": "Quick update: ENG-3 is now in progress.",
+          "thread_ts": "1780176656.971084",
+          "channel_id": "C34567890"
+        },
+        {
+          "ts": "1780237856.697530",
+          "user": "U8CGVYIE6",
+          "text": "Decision: We're going with option A for SUP-10.",
+          "thread_ts": "1780237856.697530",
+          "channel_id": "C34567890"
+        },
+        {
+          "ts": "1780320656.992288",
+          "user": "U4CIYHE7U",
+          "text": "Anyone seen this error before? SUP-1 is blocked on this.",
+          "thread_ts": "1780320656.992288",
+          "channel_id": "C34567890"
+        },
+        {
+          "ts": "1780248656.936587",
+          "user": "U8CGVYIE6",
+          "text": "Quick update: ENG-9 is now in progress.",
+          "thread_ts": "1780248656.936587",
+          "channel_id": "C34567890"
+        },
+        {
+          "ts": "1779949856.389688",
+          "user": "UIUC039TE",
+          "text": "Hey team, just pushed a fix for SUP-8. Can someone review?",
+          "thread_ts": "1779949856.389688",
+          "channel_id": "C34567890"
+        },
+        {
+          "ts": "1780281056.353080",
+          "user": "UNF4ZW9XA",
+          "text": "Decision: We're going with option A for SUP-4.",
+          "thread_ts": "1780281056.353080",
+          "channel_id": "C34567890"
+        },
+        {
+          "ts": "1779831056.824156",
+          "user": "UNF4ZW9XA",
+          "text": "Decision: We're going with option A for SUP-6.",
+          "thread_ts": "1779831056.824156",
+          "channel_id": "C34567890"
+        },
+        {
+          "ts": "1779856256.197573",
+          "user": "U8CGVYIE6",
+          "text": "Anyone seen this error before? ENG-10 is blocked on this.",
+          "thread_ts": "1779856256.197573",
+          "channel_id": "C34567890"
+        },
+        {
+          "ts": "1779917456.421080",
+          "user": "UDXTAD1IO",
+          "text": "Quick update: SUP-9 is now in progress.",
+          "thread_ts": "1779917456.421080",
+          "channel_id": "C34567890"
+        },
+        {
+          "ts": "1779971456.460455",
+          "user": "U8CGVYIE6",
+          "text": "PR ready for review: SUP-4",
+          "thread_ts": "1779971456.460455",
+          "channel_id": "C34567890"
+        },
+        {
+          "ts": "1780122656.575786",
+          "user": "U4CIYHE7U",
+          "text": "Quick update: ENG-9 is now in progress.",
+          "thread_ts": "1780122656.575786",
+          "channel_id": "C34567890"
+        },
+        {
+          "ts": "1780277456.856321",
+          "user": "UIUC039TE",
+          "text": "Quick update: ENG-7 is now in progress.",
+          "thread_ts": "1780277456.856321",
+          "channel_id": "C34567890"
+        },
+        {
+          "ts": "1779881456.899213",
+          "user": "UE7CKW5NG",
+          "text": "Anyone seen this error before? ENG-6 is blocked on this.",
+          "thread_ts": "1779881456.899213",
+          "channel_id": "C34567890"
+        },
+        {
+          "ts": "1779888656.389930",
+          "user": "U4AZYTJXE",
+          "text": "PR ready for review: SUP-9",
+          "thread_ts": "1779888656.389930",
+          "channel_id": "C34567890"
+        },
+        {
+          "ts": "1780191056.973074",
+          "user": "UTPAC56T4",
+          "text": "Quick update: ENG-7 is now in progress.",
+          "thread_ts": "1780191056.973074",
+          "channel_id": "C34567890"
+        }
+      ],
+      "has_more": false
+    }
+  }
+}

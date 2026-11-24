@@ -1,0 +1,77 @@
+# Two-client local rig — mirrors the hybrid prod shape.
+#
+# In prod each client's data stores live in that client's own AWS VPC, and one
+# shared lore-engine in the Loremind VPC resolves which to talk to per request
+# from the org_connection registry. Locally we stand in for "separate VPC" with
+# "separate container + separate port" — the engine cannot tell the difference,
+# because all it ever gets is a URI + password from the registry.
+#
+# Deliberately NOT reusing the existing lore-neo4j:7687 as one of the two: a test
+# where one side is the default connection can pass for the wrong reason.
+#
+#   acme    → neo4j 7688 / postgres 5444
+#   globex  → neo4j 7689 / postgres 5445
+#
+# The central registry DB (loremind-postgres:5432) is NOT here — it already runs
+# and it belongs to Loremind, not to a client. That split is the whole point.
+
+services:
+  neo4j-acme:
+    image: neo4j:5.26-community
+    container_name: tenant-neo4j-acme
+    environment:
+      NEO4J_AUTH: neo4j/acme_secret_pw
+      NEO4J_server_memory_heap_max__size: 512M
+    ports:
+      - "7688:7687"
+      - "7475:7474"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:7474 || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  neo4j-globex:
+    image: neo4j:5.26-community
+    container_name: tenant-neo4j-globex
+    environment:
+      NEO4J_AUTH: neo4j/globex_secret_pw
+      NEO4J_server_memory_heap_max__size: 512M
+    ports:
+      - "7689:7687"
+      - "7476:7474"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:7474 || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  pg-acme:
+    image: pgvector/pgvector:pg16
+    container_name: tenant-pg-acme
+    environment:
+      POSTGRES_USER: lore
+      POSTGRES_PASSWORD: acme_pg_pw
+      POSTGRES_DB: lore_memory
+    ports:
+      - "5444:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lore -d lore_memory"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  pg-globex:
+    image: pgvector/pgvector:pg16
+    container_name: tenant-pg-globex
+    environment:
+      POSTGRES_USER: lore
+      POSTGRES_PASSWORD: globex_pg_pw
+      POSTGRES_DB: lore_memory
+    ports:
+      - "5445:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lore -d lore_memory"]
+      interval: 5s
+      timeout: 5s
+      retries: 20

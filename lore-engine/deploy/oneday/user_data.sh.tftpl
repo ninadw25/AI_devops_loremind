@@ -1,0 +1,31 @@
+#!/bin/bash
+# Boot script for the one-day demo instance (rendered by Terraform: bucket, prefix, minutes).
+set -euxo pipefail
+exec > /var/log/lore-demo-boot.log 2>&1
+%{ if minutes > 0 }shutdown -h +${minutes}   # with instance_initiated_shutdown_behavior=terminate the instance deletes itself%{ endif }
+
+dnf install -y docker
+systemctl enable --now docker
+mkdir -p /usr/local/lib/docker/cli-plugins
+curl -fsSL https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-linux-x86_64 \
+  -o /usr/local/lib/docker/cli-plugins/docker-compose
+chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+
+mkdir -p /opt/lore && cd /opt/lore
+for f in stack.tgz src.tgz ui.tgz neo4j-data.tgz lore_memory.sql.gz; do aws s3 cp "s3://${bucket}/$f" .; done
+mkdir -p src ui neo4j-data pg-init
+tar xzf stack.tgz
+tar xzf src.tgz -C src
+tar xzf ui.tgz -C ui
+tar xzf neo4j-data.tgz -C neo4j-data --numeric-owner --same-owner   # keeps Neo4j's uid 7474
+mv lore_memory.sql.gz pg-init/                                       # restored by Postgres on first start
+rm -f stack.tgz src.tgz ui.tgz neo4j-data.tgz
+
+for e in engine caddy; do
+  aws ssm get-parameter --region ap-south-1 --with-decryption --name "${prefix}/$e.env" \
+    --query Parameter.Value --output text > "$e.env"
+done
+grep '^PG_PASSWORD=' engine.env > .env    # compose interpolation for the postgres service
+chmod 600 engine.env caddy.env .env
+
+docker compose up -d --build

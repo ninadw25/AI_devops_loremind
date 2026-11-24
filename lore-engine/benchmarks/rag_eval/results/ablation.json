@@ -1,0 +1,142 @@
+{
+ "cells": {
+  "on_llm": {
+   "all": 0.403,
+   "lookup": 0.4,
+   "person_tasks": 0.105,
+   "decision_why": 0.65,
+   "person_topic": 0.38
+  },
+  "off_llm": {
+   "all": 0.401,
+   "lookup": 0.133,
+   "person_tasks": 0.013,
+   "decision_why": 0.7,
+   "person_topic": 0.392
+  },
+  "on_kw": {
+   "all": 0.282,
+   "lookup": 0.633,
+   "person_tasks": 0.085,
+   "decision_why": 0.65,
+   "person_topic": 0.062
+  },
+  "off_kw": {
+   "all": 0.313,
+   "lookup": 0.633,
+   "person_tasks": 0.197,
+   "decision_why": 0.7,
+   "person_topic": 0.013
+  }
+ },
+ "effects": {
+  "rerank (LLM analysis)": {
+   "all": [
+    0.003,
+    -0.065,
+    0.068
+   ],
+   "lookup": [
+    0.267,
+    0.167,
+    0.383
+   ],
+   "person_tasks": [
+    0.091,
+    0.047,
+    0.141
+   ],
+   "decision_why": [
+    -0.05,
+    -0.2,
+    0.1
+   ],
+   "person_topic": [
+    -0.012,
+    -0.077,
+    0.05
+   ]
+  },
+  "rerank (keyword analysis)": {
+   "all": [
+    -0.03,
+    -0.085,
+    0.025
+   ],
+   "lookup": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "person_tasks": [
+    -0.112,
+    -0.183,
+    -0.043
+   ],
+   "decision_why": [
+    -0.05,
+    -0.15,
+    0.0
+   ],
+   "person_topic": [
+    0.05,
+    0.0,
+    0.15
+   ]
+  },
+  "LLM analysis (rerank on)": {
+   "all": [
+    0.121,
+    0.018,
+    0.225
+   ],
+   "lookup": [
+    -0.233,
+    -0.35,
+    -0.117
+   ],
+   "person_tasks": [
+    0.02,
+    0.0,
+    0.06
+   ],
+   "decision_why": [
+    0.0,
+    -0.2,
+    0.2
+   ],
+   "person_topic": [
+    0.318,
+    0.143,
+    0.502
+   ]
+  },
+  "LLM analysis (rerank off)": {
+   "all": [
+    0.088,
+    -0.052,
+    0.23
+   ],
+   "lookup": [
+    -0.5,
+    -0.633,
+    -0.367
+   ],
+   "person_tasks": [
+    -0.183,
+    -0.27,
+    -0.102
+   ],
+   "decision_why": [
+    0.0,
+    -0.3,
+    0.25
+   ],
+   "person_topic": [
+    0.379,
+    0.179,
+    0.592
+   ]
+  }
+ }
+}

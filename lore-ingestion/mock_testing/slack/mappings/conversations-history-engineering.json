@@ -1,0 +1,128 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/conversations.history",
+    "queryParameters": {
+      "channel": {
+        "equalTo": "C12345678"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "ok": true,
+      "messages": [
+        {
+          "ts": "1780151456.181247",
+          "user": "U4AZYTJXE",
+          "text": "Anyone seen this error before? ENG-10 is blocked on this.",
+          "thread_ts": "1780151456.181247",
+          "channel_id": "C12345678"
+        },
+        {
+          "ts": "1780165856.666390",
+          "user": "UIUC039TE",
+          "text": "Anyone seen this error before? ENG-3 is blocked on this.",
+          "thread_ts": "1780165856.666390",
+          "channel_id": "C12345678"
+        },
+        {
+          "ts": "1780245056.827659",
+          "user": "UIBLJH75L",
+          "text": "Anyone seen this error before? ENG-5 is blocked on this.",
+          "thread_ts": "1780245056.827659",
+          "channel_id": "C12345678"
+        },
+        {
+          "ts": "1780068656.446954",
+          "user": "UE7CKW5NG",
+          "text": "Decision: We're going with option A for SUP-8.",
+          "thread_ts": "1780068656.446954",
+          "channel_id": "C12345678"
+        },
+        {
+          "ts": "1780353056.973349",
+          "user": "UDXTAD1IO",
+          "text": "Decision: We're going with option A for SUP-4.",
+          "thread_ts": "1780353056.973349",
+          "channel_id": "C12345678"
+        },
+        {
+          "ts": "1779942656.998348",
+          "user": "UTPAC56T4",
+          "text": "Decision: We're going with option A for SUP-9.",
+          "thread_ts": "1779942656.998348",
+          "channel_id": "C12345678"
+        },
+        {
+          "ts": "1780335056.413118",
+          "user": "U8CGVYIE6",
+          "text": "Decision: We're going with option A for SUP-3.",
+          "thread_ts": "1780335056.413118",
+          "channel_id": "C12345678"
+        },
+        {
+          "ts": "1779859856.672661",
+          "user": "UNF4ZW9XA",
+          "text": "Anyone seen this error before? SUP-10 is blocked on this.",
+          "thread_ts": "1779859856.672661",
+          "channel_id": "C12345678"
+        },
+        {
+          "ts": "1780259456.557007",
+          "user": "U8CGVYIE6",
+          "text": "Hey team, just pushed a fix for SUP-6. Can someone review?",
+          "thread_ts": "1780259456.557007",
+          "channel_id": "C12345678"
+        },
+        {
+          "ts": "1780126256.812131",
+          "user": "UDXTAD1IO",
+          "text": "Anyone seen this error before? SUP-3 is blocked on this.",
+          "thread_ts": "1780126256.812131",
+          "channel_id": "C12345678"
+        },
+        {
+          "ts": "1780219856.660069",
+          "user": "U8CGVYIE6",
+          "text": "Decision: We're going with option A for ENG-1.",
+          "thread_ts": "1780219856.660069",
+          "channel_id": "C12345678"
+        },
+        {
+          "ts": "1779953456.128418",
+          "user": "UTPAC56T4",
+          "text": "Decision: We're going with option A for ENG-3.",
+          "thread_ts": "1779953456.128418",
+          "channel_id": "C12345678"
+        },
+        {
+          "ts": "1779805856.290556",
+          "user": "UIBLJH75L",
+          "text": "Quick update: ENG-2 is now in progress.",
+          "thread_ts": "1779805856.290556",
+          "channel_id": "C12345678"
+        },
+        {
+          "ts": "1780180256.576786",
+          "user": "UDXTAD1IO",
+          "text": "Quick update: SUP-1 is now in progress.",
+          "thread_ts": "1780180256.576786",
+          "channel_id": "C12345678"
+        },
+        {
+          "ts": "1780155056.364525",
+          "user": "UDXTAD1IO",
+          "text": "Decision: We're going with option A for ENG-3.",
+          "thread_ts": "1780155056.364525",
+          "channel_id": "C12345678"
+        }
+      ],
+      "has_more": false
+    }
+  }
+}

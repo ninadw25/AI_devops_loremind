@@ -1,0 +1,107 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/users.list"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "ok": true,
+      "members": [
+        {
+          "id": "UXAJI0Y6D",
+          "name": "alice",
+          "real_name": "Alice Chen",
+          "profile": {
+            "email": "alice.chen@techtest.io",
+            "display_name": "alice"
+          }
+        },
+        {
+          "id": "UE7CKW5NG",
+          "name": "bob",
+          "real_name": "Bob Smith",
+          "profile": {
+            "email": "bob.smith@techtest.io",
+            "display_name": "bob"
+          }
+        },
+        {
+          "id": "UIBLJH75L",
+          "name": "carol",
+          "real_name": "Carol Johnson",
+          "profile": {
+            "email": "carol.johnson@techtest.io",
+            "display_name": "carol"
+          }
+        },
+        {
+          "id": "U4AZYTJXE",
+          "name": "david",
+          "real_name": "David Williams",
+          "profile": {
+            "email": "david.williams@techtest.io",
+            "display_name": "david"
+          }
+        },
+        {
+          "id": "UIUC039TE",
+          "name": "emma",
+          "real_name": "Emma Brown",
+          "profile": {
+            "email": "emma.brown@techtest.io",
+            "display_name": "emma"
+          }
+        },
+        {
+          "id": "U4CIYHE7U",
+          "name": "frank",
+          "real_name": "Frank Davis",
+          "profile": {
+            "email": "frank.davis@techtest.io",
+            "display_name": "frank"
+          }
+        },
+        {
+          "id": "UDXTAD1IO",
+          "name": "grace",
+          "real_name": "Grace Miller",
+          "profile": {
+            "email": "grace.miller@techtest.io",
+            "display_name": "grace"
+          }
+        },
+        {
+          "id": "U8CGVYIE6",
+          "name": "henry",
+          "real_name": "Henry Wilson",
+          "profile": {
+            "email": "henry.wilson@techtest.io",
+            "display_name": "henry"
+          }
+        },
+        {
+          "id": "UNF4ZW9XA",
+          "name": "ivy",
+          "real_name": "Ivy Moore",
+          "profile": {
+            "email": "ivy.moore@techtest.io",
+            "display_name": "ivy"
+          }
+        },
+        {
+          "id": "UTPAC56T4",
+          "name": "jack",
+          "real_name": "Jack Taylor",
+          "profile": {
+            "email": "jack.taylor@techtest.io",
+            "display_name": "jack"
+          }
+        }
+      ]
+    }
+  }
+}

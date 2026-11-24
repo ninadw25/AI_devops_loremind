@@ -1,0 +1,612 @@
+Here is the complete JSON dataset parsed from your provided Slack scope data, properly formatted into an array of objects.
+
+```json
+[
+  {
+    "name": "admin",
+    "description": "Administer a workspace",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.analytics:read",
+    "description": "Access analytics data about the organization",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.app_activities:read",
+    "description": "View execution logs within an organization",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.apps:read",
+    "description": "View apps and app requests in a workspace",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.apps:write",
+    "description": "Manage apps in a workspace",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.barriers:read",
+    "description": "Read information barriers in the organization",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.barriers:write",
+    "description": "Manage information barriers in the organization",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.chat:read",
+    "description": "Read messages in conversations",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.chat:write",
+    "description": "Delete, restore, and update messages in conversations",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.conversations:manage_objects",
+    "description": "Manage channel details and create conversations related to external connections, objects, and records",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.conversations:read",
+    "description": "View the channel's member list, topic, purpose and channel name",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.conversations:write",
+    "description": "Start a new conversation, modify a conversation and modify channel details",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.invites:read",
+    "description": "View a workspace's invites and invite requests",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.invites:write",
+    "description": "Invite members to a workspace and approve or deny invitation requests",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.roles:read",
+    "description": "List role assignments for your workspace.",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.roles:write",
+    "description": "Add and remove role assignments for your workspace.",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.teams:read",
+    "description": "Access information about a workspace",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.teams:write",
+    "description": "Make changes to a workspace",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.usergroups:read",
+    "description": "Access information about user groups",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.usergroups:write",
+    "description": "Make changes to your usergroups",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.users:read",
+    "description": "Access a workspace's profile information",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.users:write",
+    "description": "Modify account information",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.workflows:read",
+    "description": "View all workflows in a workspace",
+    "token_types": ["User"]
+  },
+  {
+    "name": "admin.workflows:write",
+    "description": "Manage workflows in a workspace",
+    "token_types": ["User"]
+  },
+  {
+    "name": "app_configurations:read",
+    "description": "Read app configuration info via App Manifest APIs",
+    "token_types": ["Configuration"]
+  },
+  {
+    "name": "app_configurations:write",
+    "description": "Write app configuration info and create apps via App Manifest APIs",
+    "token_types": ["Configuration"]
+  },
+  {
+    "name": "app_mentions:read",
+    "description": "View messages that directly mention your Slack app in conversations that the app is in",
+    "token_types": ["Bot", "Legacy Bot"]
+  },
+  {
+    "name": "apps.requests:write",
+    "description": "Create or cancel an App Approval request on user's behalf",
+    "token_types": ["User"]
+  },
+  {
+    "name": "assistant:write",
+    "description": "Allow your Slack app to act as an App Agent",
+    "token_types": ["Bot", "Legacy Bot"]
+  },
+  {
+    "name": "auditlogs:read",
+    "description": "View events from all workspaces, channels and users (Enterprise orgs only)",
+    "token_types": ["User"]
+  },
+  {
+    "name": "authorizations:read",
+    "description": "Grants permission to list authorizations associated with the Events API",
+    "token_types": ["App-level"]
+  },
+  {
+    "name": "bookmarks:read",
+    "description": "List bookmarks",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "bookmarks:write",
+    "description": "Create, edit, and remove bookmarks",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "bot",
+    "description": "Add the ability for people to direct message or mention @your_slack_app",
+    "token_types": ["Legacy Bot"]
+  },
+  {
+    "name": "calls:read",
+    "description": "View information about ongoing and past calls",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "calls:write",
+    "description": "Start and manage calls in a workspace",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "canvases:read",
+    "description": "Access contents of canvases created inside Slack.",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "canvases:write",
+    "description": "your Slack app will be able to create, edit and remove canvases, Create, edit and remove canvases",
+    "token_types": ["Bot", "User"]
+  },
+  {
+    "name": "channels:history",
+    "description": "View messages and other content in public channels that your Slack app has been added to",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "channels:join",
+    "description": "Join public channels in a workspace",
+    "token_types": ["Bot", "Legacy Bot"]
+  },
+  {
+    "name": "channels:manage",
+    "description": "Manage public channels that your Slack app has been added to and create new ones",
+    "token_types": ["Bot", "Legacy Bot"]
+  },
+  {
+    "name": "channels:read",
+    "description": "View basic information about public channels in a workspace",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "channels:write",
+    "description": "Manage a user's public channels and create new ones on a user's behalf",
+    "token_types": ["User"]
+  },
+  {
+    "name": "channels:write.invites",
+    "description": "Invite members to public channels",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "channels:write.topic",
+    "description": "Set the description of public channels",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "chat:write",
+    "description": "Send messages as your Slack app",
+    "token_types": ["Bot", "User"]
+  },
+  {
+    "name": "chat:write.customize",
+    "description": "Send messages as your Slack app with a customized username and avatar",
+    "token_types": ["Bot", "Legacy Bot"]
+  },
+  {
+    "name": "chat:write.public",
+    "description": "Send messages to channels your Slack app isn't a member of",
+    "token_types": ["Bot", "Legacy Bot"]
+  },
+  {
+    "name": "client",
+    "description": "Receive all events from a workspace in real time",
+    "token_types": []
+  },
+  {
+    "name": "commands",
+    "description": "Add shortcuts and slash commands that people can use",
+    "token_types": ["Bot"]
+  },
+  {
+    "name": "connections:write",
+    "description": "Grants permission to generate websocket URIs and connect to Socket Mode",
+    "token_types": ["App-level"]
+  },
+  {
+    "name": "conversations.connect:manage",
+    "description": "Allows your Slack app to manage Slack Connect channels",
+    "token_types": ["Bot", "Legacy Bot"]
+  },
+  {
+    "name": "conversations.connect:read",
+    "description": "Receive Slack Connect invite events sent to the channels your Slack app is in",
+    "token_types": ["Bot", "Legacy Bot"]
+  },
+  {
+    "name": "conversations.connect:write",
+    "description": "Create Slack Connect invitations for channels that your Slack app has been added to, and accept invitations sent to your Slack app",
+    "token_types": ["Bot", "Legacy Bot"]
+  },
+  {
+    "name": "datastore:read",
+    "description": "View and see data from Slack App Datastore",
+    "token_types": ["Bot", "Legacy Bot"]
+  },
+  {
+    "name": "datastore:write",
+    "description": "Write data to Slack App Datastore",
+    "token_types": ["Bot", "Legacy Bot"]
+  },
+  {
+    "name": "dnd:read",
+    "description": "View Do Not Disturb settings for people in a workspace",
+    "token_types": ["Bot", "User"]
+  },
+  {
+    "name": "dnd:write",
+    "description": "Edit a user's Do Not Disturb settings",
+    "token_types": ["User"]
+  },
+  {
+    "name": "email",
+    "description": "View a user's email address",
+    "token_types": ["User"]
+  },
+  {
+    "name": "emoji:read",
+    "description": "View custom emoji in a workspace",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "files:read",
+    "description": "View files shared in channels and conversations that your Slack app has been added to",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "files:write",
+    "description": "Upload, edit, and delete files as your Slack app",
+    "token_types": ["Bot", "User"]
+  },
+  {
+    "name": "groups:history",
+    "description": "View messages and other content in private channels that your Slack app has been added to",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "groups:read",
+    "description": "View basic information about private channels that your Slack app has been added to",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "groups:write",
+    "description": "Manage private channels that your Slack app has been added to and create new ones",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "groups:write.invites",
+    "description": "Invite members to private channels",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "groups:write.topic",
+    "description": "Set the description of private channels",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "hosting:read",
+    "description": "View and see information about Slack apps",
+    "token_types": ["User"]
+  },
+  {
+    "name": "hosting:write",
+    "description": "Manage and deploy Slack apps",
+    "token_types": ["User"]
+  },
+  {
+    "name": "identify",
+    "description": "View information about a user's identity",
+    "token_types": ["User"]
+  },
+  {
+    "name": "im:history",
+    "description": "View messages and other content in direct messages that your Slack app has been added to",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "im:read",
+    "description": "View basic information about direct messages that your Slack app has been added to",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "im:write",
+    "description": "Start direct messages with people",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "im:write.topic",
+    "description": "Set the description in direct messages",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "incoming-webhook",
+    "description": "Post messages to specific channels in Slack",
+    "token_types": ["Bot", "Legacy Bot"]
+  },
+  {
+    "name": "links:read",
+    "description": "View URLs in messages",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "links:write",
+    "description": "Show previews of URLs in messages",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "links.embed:write",
+    "description": "Embed video player URLs in messages and app surfaces",
+    "token_types": ["Bot", "User"]
+  },
+  {
+    "name": "lists:read",
+    "description": "View Slack Lists",
+    "token_types": ["Bot", "User"]
+  },
+  {
+    "name": "lists:write",
+    "description": "Create, edit, and delete Slack Lists",
+    "token_types": ["Bot", "User"]
+  },
+  {
+    "name": "metadata.message:read",
+    "description": "Allows your Slack app to read message metadata in channels that your Slack app has been added to",
+    "token_types": ["Bot", "Legacy Bot"]
+  },
+  {
+    "name": "mpim:history",
+    "description": "View messages and other content in group direct messages that your Slack app has been added to",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "mpim:read",
+    "description": "View basic information about group direct messages that your Slack app has been added to",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "mpim:write",
+    "description": "Start group direct messages with people",
+    "token_types": ["User", "Legacy Bot"]
+  },
+  {
+    "name": "mpim:write.topic",
+    "description": "Set the description in group direct messages",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "openid",
+    "description": "View information about a user's identity",
+    "token_types": ["User"]
+  },
+  {
+    "name": "pins:read",
+    "description": "View pinned content in channels and conversations that your Slack app has been added to",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "pins:write",
+    "description": "Add and remove pinned messages and files",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "profile",
+    "description": "View a user's Slack avatar and Slack workspace's basic information",
+    "token_types": ["User"]
+  },
+  {
+    "name": "reactions:read",
+    "description": "View emoji reactions and their associated content in channels and conversations that your Slack app has been added to",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "reactions:write",
+    "description": "Add and edit emoji reactions",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "reminders:read",
+    "description": "View reminders created by your Slack app",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "reminders:write",
+    "description": "Add, remove, or mark reminders as complete",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "remote_files:read",
+    "description": "View remote files added by the app in a workspace",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "remote_files:share",
+    "description": "Share remote files on a user's behalf",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "remote_files:write",
+    "description": "Add, edit, and delete remote files on a user's behalf",
+    "token_types": ["Bot", "Legacy Bot"]
+  },
+  {
+    "name": "search:read",
+    "description": "Search a workspace's content",
+    "token_types": ["User"]
+  },
+  {
+    "name": "search:read.enterprise",
+    "description": "Search content in your enterprise.",
+    "token_types": ["Bot", "Legacy Bot"]
+  },
+  {
+    "name": "search:read.files",
+    "description": "Search a workspace's content in files",
+    "token_types": ["Bot", "Legacy Bot", "User"]
+  },
+  {
+    "name": "search:read.im",
+    "description": "Search a workspace's content in direct messages",
+    "token_types": ["User"]
+  },
+  {
+    "name": "search:read.mpim",
+    "description": "Search a workspace's content in group direct messages",
+    "token_types": ["User"]
+  },
+  {
+    "name": "search:read.private",
+    "description": "Search a workspace's content in private channels",
+    "token_types": ["User"]
+  },
+  {
+    "name": "search:read.public",
+    "description": "Search a workspace's content in public channels",
+    "token_types": ["Bot", "User"]
+  },
+  {
+    "name": "search:read.users",
+    "description": "Search a workspace's users",
+    "token_types": ["Bot", "User"]
+  },
+  {
+    "name": "stars:read",
+    "description": "View a user's starred messages and files",
+    "token_types": ["User"]
+  },
+  {
+    "name": "stars:write",
+    "description": "Add or remove stars for a user",
+    "token_types": ["User"]
+  },
+  {
+    "name": "team:read",
+    "description": "View the name, email domain, and icon for workspaces your Slack app is connected to",
+    "token_types": ["Bot", "User"]
+  },
+  {
+    "name": "team.billing:read",
+    "description": "Allows your Slack app to read the billing plan for workspaces your Slack app has been installed to",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "team.preferences:read",
+    "description": "Allows your Slack app to read the preferences for workspaces your Slack app has been installed to",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "tokens.basic",
+    "description": "Execute methods without needing a scope",
+    "token_types": ["User", "Bot", "Legacy Bot"]
+  },
+  {
+    "name": "triggers:read",
+    "description": "Read new Platform triggers",
+    "token_types": ["Bot"]
+  },
+  {
+    "name": "triggers:write",
+    "description": "Create new Platform triggers",
+    "token_types": ["Bot"]
+  },
+  {
+    "name": "usergroups:read",
+    "description": "View user groups in a workspace",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "usergroups:write",
+    "description": "Create and manage user groups",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "users:read",
+    "description": "View people in a workspace",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "users:read.email",
+    "description": "View email addresses of people in a workspace",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "users:write",
+    "description": "Set presence for your Slack app",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "users.profile:read",
+    "description": "View profile details about people in a workspace",
+    "token_types": ["Bot", "User", "Legacy Bot"]
+  },
+  {
+    "name": "users.profile:write",
+    "description": "Edit a user's profile information and status",
+    "token_types": ["User"]
+  },
+  {
+    "name": "workflows.templates:read",
+    "description": "Manage Slack workflow template on user's behalf",
+    "token_types": ["Bot", "User"]
+  },
+  {
+    "name": "workflows.templates:write",
+    "description": "Write Slack workflow template on user's behalf",
+    "token_types": ["Bot", "User"]
+  }
+]
+
+```

@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Lore engine: query path and GitOps delivery on loremind-eks",
+    "output": "lore-engine-eks.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "users",
+      "type": "external",
+      "label": "Lore UI",
+      "sublabel": "/ask, /experts",
+      "pos": [
+        40,
+        150
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "gateway",
+      "type": "backend",
+      "label": "core-backend",
+      "sublabel": "gateway :8001",
+      "tag": "EKS",
+      "pos": [
+        250,
+        150
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "rbac",
+      "type": "security",
+      "label": "auth-service",
+      "sublabel": "JWKS + scopes",
+      "tag": "EKS",
+      "pos": [
+        250,
+        40
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "engine",
+      "type": "backend",
+      "label": "lore-engine",
+      "sublabel": "FastAPI :8000",
+      "tag": "EKS",
+      "pos": [
+        470,
+        150
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "llm",
+      "type": "external",
+      "label": "Bedrock + NVIDIA",
+      "sublabel": "LLM, embeddings",
+      "pos": [
+        470,
+        40
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "neo4j",
+      "type": "database",
+      "label": "Neo4j",
+      "sublabel": "knowledge graph",
+      "tag": "EC2",
+      "pos": [
+        700,
+        150
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "pg",
+      "type": "database",
+      "label": "RDS Postgres",
+      "sublabel": "chat memory",
+      "pos": [
+        700,
+        260
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "gitlab",
+      "type": "cloud",
+      "label": "GitLab CI",
+      "sublabel": "test, build",
+      "pos": [
+        40,
+        370
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "ecr",
+      "type": "cloud",
+      "label": "ECR",
+      "sublabel": "lore-engine:sha",
+      "pos": [
+        40,
+        260
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "gitops",
+      "type": "cloud",
+      "label": "root/gitops",
+      "sublabel": "image tag",
+      "pos": [
+        250,
+        370
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "argocd",
+      "type": "cloud",
+      "label": "ArgoCD",
+      "sublabel": "syncs cluster",
+      "tag": "EKS",
+      "pos": [
+        470,
+        370
+      ],
+      "size": [
+        140,
+        60
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "ui-gateway",
+      "from": "users",
+      "to": "gateway",
+      "label": "HTTPS",
+      "variant": "emphasis"
+    },
+    {
+      "id": "gateway-rbac",
+      "from": "gateway",
+      "to": "rbac",
+      "label": "verify JWT",
+      "variant": "security"
+    },
+    {
+      "id": "gateway-engine",
+      "from": "gateway",
+      "to": "engine",
+      "label": "scoped query",
+      "variant": "emphasis"
+    },
+    {
+      "id": "engine-neo4j",
+      "from": "engine",
+      "to": "neo4j",
+      "label": "Cypher",
+      "variant": "emphasis"
+    },
+    {
+      "id": "engine-llm",
+      "from": "engine",
+      "to": "llm",
+      "label": "embed, answer"
+    },
+    {
+      "id": "engine-pg",
+      "from": "engine",
+      "to": "pg",
+      "label": "threads",
+      "variant": "dashed"
+    },
+    {
+      "id": "ci-ecr",
+      "from": "gitlab",
+      "to": "ecr",
+      "label": "push image"
+    },
+    {
+      "id": "ci-gitops",
+      "from": "gitlab",
+      "to": "gitops",
+      "label": "bump tag"
+    },
+    {
+      "id": "gitops-argocd",
+      "from": "gitops",
+      "to": "argocd",
+      "label": "watch"
+    },
+    {
+      "id": "argocd-engine",
+      "from": "argocd",
+      "to": "engine",
+      "label": "rolling update",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Query path",
+      "items": [
+        "Gateway verifies the JWT and injects scopes",
+        "Engine expands the graph, reranks, answers"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Delivery",
+      "items": [
+        "CI never touches the cluster",
+        "ArgoCD applies the gitops commit",
+        "Rollback = revert the tag bump"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Gaps today",
+      "items": [
+        "No lore-engine manifest in gitops",
+        "Neo4j host stopped 2026-09-27"
+      ]
+    }
+  ]
+}

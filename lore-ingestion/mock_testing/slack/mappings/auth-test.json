@@ -1,0 +1,20 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/auth.test"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json",
+      "X-OAuth-Scopes": "channels:read,channels:history,groups:read,groups:history,im:read,im:history,mpim:read,mpim:history,users:read,users:read.email,usergroups:read,reactions:read,files:read"
+    },
+    "jsonBody": {
+      "ok": true,
+      "team": "TechTest",
+      "team_id": "T12345678",
+      "user": "mockbot",
+      "user_id": "UBOT1234"
+    }
+  }
+}

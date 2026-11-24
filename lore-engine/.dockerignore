@@ -1,0 +1,12 @@
+.git
+.gitlab-ci.yml
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+tests/
+docs/
+lore_backend.egg-info/
+output/
+docker-compose.yml
+.env

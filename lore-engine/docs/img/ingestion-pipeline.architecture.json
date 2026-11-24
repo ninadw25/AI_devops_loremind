@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "Lore Ingestion Pipeline",
+    "viewBox": [
+      1070,
+      650
+    ],
+    "quality_profile": "showcase"
+  },
+  "stages": [
+    {
+      "label": "Sources + ACL scope"
+    },
+    {
+      "label": "Three pipelines"
+    },
+    {
+      "label": "Shared ontology"
+    },
+    {
+      "label": "Build + embed"
+    },
+    {
+      "label": "Stores + consumers"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "mailchat",
+      "type": "external",
+      "label": "Gmail + Slack",
+      "sublabel": "person: | slack:channel:",
+      "stage": 0,
+      "row": 0,
+      "tag": "scope_ids",
+      "width": 150
+    },
+    {
+      "id": "jira",
+      "type": "external",
+      "label": "Jira",
+      "sublabel": "jira:project: + seclevel",
+      "stage": 0,
+      "row": 2,
+      "tag": "scope_all_ids",
+      "width": 150
+    },
+    {
+      "id": "code",
+      "type": "external",
+      "label": "GitHub + GitLab",
+      "sublabel": "repos and commits",
+      "stage": 0,
+      "row": 3,
+      "tag": "no scopes yet",
+      "width": 150
+    },
+    {
+      "id": "mailpipe",
+      "type": "backend",
+      "label": "Mail + chat flow",
+      "sublabel": "filter, group, LLM, validate",
+      "stage": 1,
+      "row": 0,
+      "tag": "LLM triples",
+      "width": 150
+    },
+    {
+      "id": "jirapipe",
+      "type": "backend",
+      "label": "Jira flow",
+      "sublabel": "fields first, LLM for prose",
+      "stage": 1,
+      "row": 2,
+      "tag": "deterministic",
+      "width": 150
+    },
+    {
+      "id": "chrono",
+      "type": "backend",
+      "label": "Chronograph",
+      "sublabel": "symbols, commits, diffs",
+      "stage": 1,
+      "row": 3,
+      "tag": "code intel",
+      "width": 150
+    },
+    {
+      "id": "ontology",
+      "type": "security",
+      "label": "Common ontology",
+      "sublabel": "MERGE spine, LINK content",
+      "stage": 2,
+      "row": 1,
+      "tag": "7 node types",
+      "width": 150
+    },
+    {
+      "id": "builder",
+      "type": "backend",
+      "label": "unified_builder",
+      "sublabel": "Cypher + 2048-d vectors",
+      "stage": 3,
+      "row": 1,
+      "tag": "nemotron-3-embed-1b",
+      "width": 150
+    },
+    {
+      "id": "pg",
+      "type": "database",
+      "label": "Postgres + pgvector",
+      "sublabel": "chronograph schema",
+      "stage": 3,
+      "row": 3,
+      "tag": "symbols",
+      "width": 150
+    },
+    {
+      "id": "neo4j",
+      "type": "database",
+      "label": "Neo4j graph",
+      "sublabel": "scope_ids on every node",
+      "stage": 4,
+      "row": 2,
+      "tag": "fail-closed",
+      "width": 150
+    },
+    {
+      "id": "rbac",
+      "type": "cloud",
+      "label": "elysia-rbac",
+      "sublabel": "identity + scope artifacts",
+      "stage": 4,
+      "row": 0,
+      "tag": "via S3",
+      "width": 150
+    },
+    {
+      "id": "engine",
+      "type": "backend",
+      "label": "lore-engine",
+      "sublabel": "reads graph + code store",
+      "stage": 4,
+      "row": 3,
+      "tag": "query time",
+      "width": 150
+    }
+  ],
+  "flows": [
+    {
+      "id": "f1",
+      "from": "mailchat",
+      "to": "mailpipe",
+      "label": "threads",
+      "classification": "scoped",
+      "variant": "emphasis",
+      "route": "straight"
+    },
+    {
+      "id": "f2",
+      "from": "jira",
+      "to": "jirapipe",
+      "label": "issues",
+      "classification": "scoped",
+      "variant": "emphasis",
+      "route": "straight"
+    },
+    {
+      "id": "f3",
+      "from": "code",
+      "to": "chrono",
+      "label": "repos",
+      "classification": "code",
+      "route": "straight"
+    },
+    {
+      "id": "f4",
+      "from": "mailpipe",
+      "to": "ontology",
+      "label": "triples",
+      "variant": "emphasis"
+    },
+    {
+      "id": "f5",
+      "from": "jirapipe",
+      "to": "ontology",
+      "label": "triples",
+      "variant": "emphasis"
+    },
+    {
+      "id": "f6",
+      "from": "ontology",
+      "to": "builder",
+      "label": "nodes",
+      "variant": "emphasis",
+      "route": "straight"
+    },
+    {
+      "id": "f7",
+      "from": "chrono",
+      "to": "pg",
+      "label": "vectors",
+      "route": "straight"
+    },
+    {
+      "id": "f8",
+      "from": "builder",
+      "to": "neo4j",
+      "label": "Cypher",
+      "variant": "emphasis"
+    },
+    {
+      "id": "f9",
+      "from": "builder",
+      "to": "rbac",
+      "label": "artifacts",
+      "variant": "security"
+    },
+    {
+      "id": "f10",
+      "from": "neo4j",
+      "to": "engine",
+      "label": "graph",
+      "labelDy": 24
+    },
+    {
+      "id": "f11",
+      "from": "pg",
+      "to": "engine",
+      "label": "code",
+      "route": "straight"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Scope first",
+      "items": [
+        "scope_ids (OR) + scope_all_ids (AND) stamped at fetch",
+        "No scopes = invisible (fail-closed)",
+        "Code store has no scope_ids yet (planned)"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Why an ontology",
+      "items": [
+        "One typed vocabulary lets every source land in one graph",
+        "Spine MERGEd, content LINKed, CORROBORATES across sources",
+        "Typed graph retrieval: GraphRAG (Edge 2024)"
+      ]
+    },
+    {
+      "dot": "orange",
+      "title": "References",
+      "items": [
+        "Lewis 2020, RAG: arXiv 2005.11401",
+        "Edge 2024, GraphRAG: 2404.16130; Peng 2024 survey: 2408.08921",
+        "KG construction impact on RAG: 2511.05991"
+      ]
+    }
+  ]
+}

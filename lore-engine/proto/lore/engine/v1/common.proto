@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+// Shared messages for the lore-engine gRPC API.
+//
+// Scopes are NOT a message field anywhere in this API — see query.proto's
+// QueryRequest for why. They travel in gRPC call metadata instead
+// (x-scope-ids / x-scope-all-ids / x-super-admin, JSON-array-encoded), the
+// same channel already used for identity (x-user-id / x-org / x-role). That
+// keeps "no scope fields on any request message" a structural fact of the
+// schema, not a convention enforced only by who happens to construct one.
+package lore.engine.v1;
+
+// One source citation returned with an answer. Field-for-field match of the
+// HTTP SourceOut model so gateway↔frontend JSON is JSON-identical (same fields,
+// types, shapes — not byte-identical, since each side re-serializes).
+message Source {
+  string type = 1;
+  string description = 2;
+  string thread_id = 3;
+  double score = 4;
+  string sensitivity = 5;
+}
+
+message SourceList {
+  repeated Source sources = 1;
+}
+
+// Terminal event of a query stream.
+message Done {
+  // "high" | "medium" | "low" — same vocabulary as the HTTP path.
+  string confidence = 1;
+}
+
+// In-band stream error. Mirrors the HTTP SSE {"type":"error","data":"<msg>"}
+// event so the frontend's existing error handling is unchanged.
+message StreamError {
+  string message = 1;
+}

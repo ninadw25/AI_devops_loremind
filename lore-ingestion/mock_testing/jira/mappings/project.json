@@ -1,0 +1,24 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/rest/api/3/project"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": [
+      {
+        "id": "10000",
+        "key": "ENG",
+        "name": "Engineering"
+      },
+      {
+        "id": "10001",
+        "key": "SUP",
+        "name": "Support"
+      }
+    ]
+  }
+}

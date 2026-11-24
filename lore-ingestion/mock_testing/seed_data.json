@@ -1,0 +1,1302 @@
+{
+  "meta": {
+    "generated_at": "2026-06-02T10:00:56.241273",
+    "config": {
+      "org": "techtest",
+      "num_users": 10
+    }
+  },
+  "users": [
+    {
+      "name": "Alice Chen",
+      "email": "alice.chen@techtest.io",
+      "slack_id": "UXAJI0Y6D",
+      "jira_account_id": "0ad2ad42d36a65fc9fbb7365",
+      "slack_profile": {
+        "display_name": "alice",
+        "real_name": "Alice Chen",
+        "email": "alice.chen@techtest.io"
+      },
+      "jira_profile": {
+        "displayName": "Alice Chen",
+        "emailAddress": "alice.chen@techtest.io",
+        "accountId": "0ad2ad42d36a65fc9fbb7365"
+      },
+      "team": "Ops"
+    },
+    {
+      "name": "Bob Smith",
+      "email": "bob.smith@techtest.io",
+      "slack_id": "UE7CKW5NG",
+      "jira_account_id": "b46977017cf454b42d1e85df",
+      "slack_profile": {
+        "display_name": "bob",
+        "real_name": "Bob Smith",
+        "email": "bob.smith@techtest.io"
+      },
+      "jira_profile": {
+        "displayName": "Bob Smith",
+        "emailAddress": "bob.smith@techtest.io",
+        "accountId": "b46977017cf454b42d1e85df"
+      },
+      "team": "Engineering"
+    },
+    {
+      "name": "Carol Johnson",
+      "email": "carol.johnson@techtest.io",
+      "slack_id": "UIBLJH75L",
+      "jira_account_id": "4081ed2e380d92bab460b092",
+      "slack_profile": {
+        "display_name": "carol",
+        "real_name": "Carol Johnson",
+        "email": "carol.johnson@techtest.io"
+      },
+      "jira_profile": {
+        "displayName": "Carol Johnson",
+        "emailAddress": "carol.johnson@techtest.io",
+        "accountId": "4081ed2e380d92bab460b092"
+      },
+      "team": "Ops"
+    },
+    {
+      "name": "David Williams",
+      "email": "david.williams@techtest.io",
+      "slack_id": "U4AZYTJXE",
+      "jira_account_id": "0198e2c87e43c6262afa887e",
+      "slack_profile": {
+        "display_name": "david",
+        "real_name": "David Williams",
+        "email": "david.williams@techtest.io"
+      },
+      "jira_profile": {
+        "displayName": "David Williams",
+        "emailAddress": "david.williams@techtest.io",
+        "accountId": "0198e2c87e43c6262afa887e"
+      },
+      "team": "Engineering"
+    },
+    {
+      "name": "Emma Brown",
+      "email": "emma.brown@techtest.io",
+      "slack_id": "UIUC039TE",
+      "jira_account_id": "49c239865504f81dba23a5ab",
+      "slack_profile": {
+        "display_name": "emma",
+        "real_name": "Emma Brown",
+        "email": "emma.brown@techtest.io"
+      },
+      "jira_profile": {
+        "displayName": "Emma Brown",
+        "emailAddress": "emma.brown@techtest.io",
+        "accountId": "49c239865504f81dba23a5ab"
+      },
+      "team": "Engineering"
+    },
+    {
+      "name": "Frank Davis",
+      "email": "frank.davis@techtest.io",
+      "slack_id": "U4CIYHE7U",
+      "jira_account_id": "166db001549b0f7dd10ed817",
+      "slack_profile": {
+        "display_name": "frank",
+        "real_name": "Frank Davis",
+        "email": "frank.davis@techtest.io"
+      },
+      "jira_profile": {
+        "displayName": "Frank Davis",
+        "emailAddress": "frank.davis@techtest.io",
+        "accountId": "166db001549b0f7dd10ed817"
+      },
+      "team": "Ops"
+    },
+    {
+      "name": "Grace Miller",
+      "email": "grace.miller@techtest.io",
+      "slack_id": "UDXTAD1IO",
+      "jira_account_id": "178ca086e55641dda5afa182",
+      "slack_profile": {
+        "display_name": "grace",
+        "real_name": "Grace Miller",
+        "email": "grace.miller@techtest.io"
+      },
+      "jira_profile": {
+        "displayName": "Grace Miller",
+        "emailAddress": "grace.miller@techtest.io",
+        "accountId": "178ca086e55641dda5afa182"
+      },
+      "team": "Engineering"
+    },
+    {
+      "name": "Henry Wilson",
+      "email": "henry.wilson@techtest.io",
+      "slack_id": "U8CGVYIE6",
+      "jira_account_id": "d330328d5d04ef6b199bde88",
+      "slack_profile": {
+        "display_name": "henry",
+        "real_name": "Henry Wilson",
+        "email": "henry.wilson@techtest.io"
+      },
+      "jira_profile": {
+        "displayName": "Henry Wilson",
+        "emailAddress": "henry.wilson@techtest.io",
+        "accountId": "d330328d5d04ef6b199bde88"
+      },
+      "team": "Product"
+    },
+    {
+      "name": "Ivy Moore",
+      "email": "ivy.moore@techtest.io",
+      "slack_id": "UNF4ZW9XA",
+      "jira_account_id": "7e49cbb2e35d4e187b0ea64e",
+      "slack_profile": {
+        "display_name": "ivy",
+        "real_name": "Ivy Moore",
+        "email": "ivy.moore@techtest.io"
+      },
+      "jira_profile": {
+        "displayName": "Ivy Moore",
+        "emailAddress": "ivy.moore@techtest.io",
+        "accountId": "7e49cbb2e35d4e187b0ea64e"
+      },
+      "team": "Support"
+    },
+    {
+      "name": "Jack Taylor",
+      "email": "jack.taylor@techtest.io",
+      "slack_id": "UTPAC56T4",
+      "jira_account_id": "3cce8678ddb6803c87968a5f",
+      "slack_profile": {
+        "display_name": "jack",
+        "real_name": "Jack Taylor",
+        "email": "jack.taylor@techtest.io"
+      },
+      "jira_profile": {
+        "displayName": "Jack Taylor",
+        "emailAddress": "jack.taylor@techtest.io",
+        "accountId": "3cce8678ddb6803c87968a5f"
+      },
+      "team": "Support"
+    }
+  ],
+  "slack": {
+    "team_id": "T12345678",
+    "team_name": "TechTest",
+    "channels": [
+      {
+        "id": "C12345678",
+        "name": "engineering",
+        "is_channel": true,
+        "is_private": false
+      },
+      {
+        "id": "C23456789",
+        "name": "general",
+        "is_channel": true,
+        "is_private": false
+      },
+      {
+        "id": "C34567890",
+        "name": "product",
+        "is_channel": true,
+        "is_private": false
+      },
+      {
+        "id": "G12345678",
+        "name": "leadership",
+        "is_channel": false,
+        "is_private": true
+      }
+    ],
+    "messages": [
+      {
+        "ts": "1780151456.181247",
+        "user": "U4AZYTJXE",
+        "text": "Anyone seen this error before? ENG-10 is blocked on this.",
+        "thread_ts": "1780151456.181247",
+        "channel_id": "C12345678"
+      },
+      {
+        "ts": "1780165856.666390",
+        "user": "UIUC039TE",
+        "text": "Anyone seen this error before? ENG-3 is blocked on this.",
+        "thread_ts": "1780165856.666390",
+        "channel_id": "C12345678"
+      },
+      {
+        "ts": "1780245056.827659",
+        "user": "UIBLJH75L",
+        "text": "Anyone seen this error before? ENG-5 is blocked on this.",
+        "thread_ts": "1780245056.827659",
+        "channel_id": "C12345678"
+      },
+      {
+        "ts": "1780068656.446954",
+        "user": "UE7CKW5NG",
+        "text": "Decision: We're going with option A for SUP-8.",
+        "thread_ts": "1780068656.446954",
+        "channel_id": "C12345678"
+      },
+      {
+        "ts": "1780353056.973349",
+        "user": "UDXTAD1IO",
+        "text": "Decision: We're going with option A for SUP-4.",
+        "thread_ts": "1780353056.973349",
+        "channel_id": "C12345678"
+      },
+      {
+        "ts": "1779942656.998348",
+        "user": "UTPAC56T4",
+        "text": "Decision: We're going with option A for SUP-9.",
+        "thread_ts": "1779942656.998348",
+        "channel_id": "C12345678"
+      },
+      {
+        "ts": "1780335056.413118",
+        "user": "U8CGVYIE6",
+        "text": "Decision: We're going with option A for SUP-3.",
+        "thread_ts": "1780335056.413118",
+        "channel_id": "C12345678"
+      },
+      {
+        "ts": "1779859856.672661",
+        "user": "UNF4ZW9XA",
+        "text": "Anyone seen this error before? SUP-10 is blocked on this.",
+        "thread_ts": "1779859856.672661",
+        "channel_id": "C12345678"
+      },
+      {
+        "ts": "1780259456.557007",
+        "user": "U8CGVYIE6",
+        "text": "Hey team, just pushed a fix for SUP-6. Can someone review?",
+        "thread_ts": "1780259456.557007",
+        "channel_id": "C12345678"
+      },
+      {
+        "ts": "1780126256.812131",
+        "user": "UDXTAD1IO",
+        "text": "Anyone seen this error before? SUP-3 is blocked on this.",
+        "thread_ts": "1780126256.812131",
+        "channel_id": "C12345678"
+      },
+      {
+        "ts": "1780219856.660069",
+        "user": "U8CGVYIE6",
+        "text": "Decision: We're going with option A for ENG-1.",
+        "thread_ts": "1780219856.660069",
+        "channel_id": "C12345678"
+      },
+      {
+        "ts": "1779953456.128418",
+        "user": "UTPAC56T4",
+        "text": "Decision: We're going with option A for ENG-3.",
+        "thread_ts": "1779953456.128418",
+        "channel_id": "C12345678"
+      },
+      {
+        "ts": "1779805856.290556",
+        "user": "UIBLJH75L",
+        "text": "Quick update: ENG-2 is now in progress.",
+        "thread_ts": "1779805856.290556",
+        "channel_id": "C12345678"
+      },
+      {
+        "ts": "1780180256.576786",
+        "user": "UDXTAD1IO",
+        "text": "Quick update: SUP-1 is now in progress.",
+        "thread_ts": "1780180256.576786",
+        "channel_id": "C12345678"
+      },
+      {
+        "ts": "1780155056.364525",
+        "user": "UDXTAD1IO",
+        "text": "Decision: We're going with option A for ENG-3.",
+        "thread_ts": "1780155056.364525",
+        "channel_id": "C12345678"
+      },
+      {
+        "ts": "1779881456.154615",
+        "user": "UXAJI0Y6D",
+        "text": "Anyone seen this error before? SUP-2 is blocked on this.",
+        "thread_ts": "1779881456.154615",
+        "channel_id": "C23456789"
+      },
+      {
+        "ts": "1779784256.142213",
+        "user": "UE7CKW5NG",
+        "text": "Anyone seen this error before? ENG-1 is blocked on this.",
+        "thread_ts": "1779784256.142213",
+        "channel_id": "C23456789"
+      },
+      {
+        "ts": "1779856256.751517",
+        "user": "U4AZYTJXE",
+        "text": "Anyone seen this error before? ENG-5 is blocked on this.",
+        "thread_ts": "1779856256.751517",
+        "channel_id": "C23456789"
+      },
+      {
+        "ts": "1780039856.219946",
+        "user": "UIBLJH75L",
+        "text": "Anyone seen this error before? SUP-9 is blocked on this.",
+        "thread_ts": "1780039856.219946",
+        "channel_id": "C23456789"
+      },
+      {
+        "ts": "1779913856.904150",
+        "user": "U8CGVYIE6",
+        "text": "Anyone seen this error before? SUP-2 is blocked on this.",
+        "thread_ts": "1779913856.904150",
+        "channel_id": "C23456789"
+      },
+      {
+        "ts": "1779946256.853252",
+        "user": "UTPAC56T4",
+        "text": "Anyone seen this error before? ENG-4 is blocked on this.",
+        "thread_ts": "1779946256.853252",
+        "channel_id": "C23456789"
+      },
+      {
+        "ts": "1780309856.126925",
+        "user": "UIUC039TE",
+        "text": "PR ready for review: ENG-10",
+        "thread_ts": "1780309856.126925",
+        "channel_id": "C23456789"
+      },
+      {
+        "ts": "1780036256.307963",
+        "user": "UDXTAD1IO",
+        "text": "PR ready for review: ENG-3",
+        "thread_ts": "1780036256.307963",
+        "channel_id": "C23456789"
+      },
+      {
+        "ts": "1780295456.910004",
+        "user": "U4AZYTJXE",
+        "text": "PR ready for review: ENG-10",
+        "thread_ts": "1780295456.910004",
+        "channel_id": "C23456789"
+      },
+      {
+        "ts": "1779791456.920652",
+        "user": "UE7CKW5NG",
+        "text": "Quick update: ENG-2 is now in progress.",
+        "thread_ts": "1779791456.920652",
+        "channel_id": "C23456789"
+      },
+      {
+        "ts": "1780039856.488571",
+        "user": "UNF4ZW9XA",
+        "text": "PR ready for review: ENG-3",
+        "thread_ts": "1780039856.488571",
+        "channel_id": "C23456789"
+      },
+      {
+        "ts": "1780327856.962276",
+        "user": "U4CIYHE7U",
+        "text": "Hey team, just pushed a fix for SUP-6. Can someone review?",
+        "thread_ts": "1780327856.962276",
+        "channel_id": "C23456789"
+      },
+      {
+        "ts": "1780129856.968962",
+        "user": "UDXTAD1IO",
+        "text": "Anyone seen this error before? SUP-5 is blocked on this.",
+        "thread_ts": "1780129856.968962",
+        "channel_id": "C23456789"
+      },
+      {
+        "ts": "1780205456.647091",
+        "user": "UDXTAD1IO",
+        "text": "PR ready for review: ENG-9",
+        "thread_ts": "1780205456.647091",
+        "channel_id": "C23456789"
+      },
+      {
+        "ts": "1779802256.587455",
+        "user": "UNF4ZW9XA",
+        "text": "PR ready for review: SUP-4",
+        "thread_ts": "1779802256.587455",
+        "channel_id": "C23456789"
+      },
+      {
+        "ts": "1780176656.971084",
+        "user": "UIUC039TE",
+        "text": "Quick update: ENG-3 is now in progress.",
+        "thread_ts": "1780176656.971084",
+        "channel_id": "C34567890"
+      },
+      {
+        "ts": "1780237856.697530",
+        "user": "U8CGVYIE6",
+        "text": "Decision: We're going with option A for SUP-10.",
+        "thread_ts": "1780237856.697530",
+        "channel_id": "C34567890"
+      },
+      {
+        "ts": "1780320656.992288",
+        "user": "U4CIYHE7U",
+        "text": "Anyone seen this error before? SUP-1 is blocked on this.",
+        "thread_ts": "1780320656.992288",
+        "channel_id": "C34567890"
+      },
+      {
+        "ts": "1780248656.936587",
+        "user": "U8CGVYIE6",
+        "text": "Quick update: ENG-9 is now in progress.",
+        "thread_ts": "1780248656.936587",
+        "channel_id": "C34567890"
+      },
+      {
+        "ts": "1779949856.389688",
+        "user": "UIUC039TE",
+        "text": "Hey team, just pushed a fix for SUP-8. Can someone review?",
+        "thread_ts": "1779949856.389688",
+        "channel_id": "C34567890"
+      },
+      {
+        "ts": "1780281056.353080",
+        "user": "UNF4ZW9XA",
+        "text": "Decision: We're going with option A for SUP-4.",
+        "thread_ts": "1780281056.353080",
+        "channel_id": "C34567890"
+      },
+      {
+        "ts": "1779831056.824156",
+        "user": "UNF4ZW9XA",
+        "text": "Decision: We're going with option A for SUP-6.",
+        "thread_ts": "1779831056.824156",
+        "channel_id": "C34567890"
+      },
+      {
+        "ts": "1779856256.197573",
+        "user": "U8CGVYIE6",
+        "text": "Anyone seen this error before? ENG-10 is blocked on this.",
+        "thread_ts": "1779856256.197573",
+        "channel_id": "C34567890"
+      },
+      {
+        "ts": "1779917456.421080",
+        "user": "UDXTAD1IO",
+        "text": "Quick update: SUP-9 is now in progress.",
+        "thread_ts": "1779917456.421080",
+        "channel_id": "C34567890"
+      },
+      {
+        "ts": "1779971456.460455",
+        "user": "U8CGVYIE6",
+        "text": "PR ready for review: SUP-4",
+        "thread_ts": "1779971456.460455",
+        "channel_id": "C34567890"
+      },
+      {
+        "ts": "1780122656.575786",
+        "user": "U4CIYHE7U",
+        "text": "Quick update: ENG-9 is now in progress.",
+        "thread_ts": "1780122656.575786",
+        "channel_id": "C34567890"
+      },
+      {
+        "ts": "1780277456.856321",
+        "user": "UIUC039TE",
+        "text": "Quick update: ENG-7 is now in progress.",
+        "thread_ts": "1780277456.856321",
+        "channel_id": "C34567890"
+      },
+      {
+        "ts": "1779881456.899213",
+        "user": "UE7CKW5NG",
+        "text": "Anyone seen this error before? ENG-6 is blocked on this.",
+        "thread_ts": "1779881456.899213",
+        "channel_id": "C34567890"
+      },
+      {
+        "ts": "1779888656.389930",
+        "user": "U4AZYTJXE",
+        "text": "PR ready for review: SUP-9",
+        "thread_ts": "1779888656.389930",
+        "channel_id": "C34567890"
+      },
+      {
+        "ts": "1780191056.973074",
+        "user": "UTPAC56T4",
+        "text": "Quick update: ENG-7 is now in progress.",
+        "thread_ts": "1780191056.973074",
+        "channel_id": "C34567890"
+      },
+      {
+        "type": "message",
+        "channel_id": "G12345678",
+        "user": "U10001",
+        "text": "@leadership Q3 OKRs need final review",
+        "ts": "1700008000.000001"
+      },
+      {
+        "type": "message",
+        "channel_id": "G12345678",
+        "user": "U10002",
+        "text": "Lets sync on budget allocation tomorrow",
+        "ts": "1700008001.000002"
+      },
+      {
+        "type": "message",
+        "channel_id": "G12345678",
+        "user": "U10005",
+        "text": "Ping me when you decide on the hire",
+        "ts": "1700008002.000003"
+      }
+    ]
+  },
+  "jira": {
+    "base_url": "http://localhost:8091",
+    "projects": [
+      {
+        "id": "10000",
+        "key": "ENG",
+        "name": "Engineering"
+      },
+      {
+        "id": "10001",
+        "key": "SUP",
+        "name": "Support"
+      }
+    ],
+    "issues": [
+      {
+        "id": "10000",
+        "key": "ENG-1",
+        "fields": {
+          "summary": "Task ENG-1: Feature",
+          "description": "Description for issue ENG-1",
+          "status": {
+            "name": "In Progress",
+            "id": "1"
+          },
+          "priority": {
+            "name": "High",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Task",
+            "id": "10001"
+          },
+          "assignee": null,
+          "reporter": {
+            "accountId": "0198e2c87e43c6262afa887e",
+            "displayName": "David Williams"
+          },
+          "created": "2026-05-07T12:00:56.000+0000",
+          "project": {
+            "id": "10000",
+            "key": "ENG",
+            "name": "Engineering"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10001",
+        "key": "ENG-2",
+        "fields": {
+          "summary": "Task ENG-2: Bug",
+          "description": "Description for issue ENG-2",
+          "status": {
+            "name": "To Do",
+            "id": "1"
+          },
+          "priority": {
+            "name": "High",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Bug",
+            "id": "10001"
+          },
+          "assignee": null,
+          "reporter": {
+            "accountId": "0198e2c87e43c6262afa887e",
+            "displayName": "David Williams"
+          },
+          "created": "2026-05-18T23:00:56.000+0000",
+          "project": {
+            "id": "10000",
+            "key": "ENG",
+            "name": "Engineering"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10002",
+        "key": "ENG-3",
+        "fields": {
+          "summary": "Task ENG-3: Bug",
+          "description": "Description for issue ENG-3",
+          "status": {
+            "name": "In Progress",
+            "id": "1"
+          },
+          "priority": {
+            "name": "Low",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Story",
+            "id": "10001"
+          },
+          "assignee": {
+            "accountId": "49c239865504f81dba23a5ab",
+            "displayName": "Emma Brown"
+          },
+          "reporter": {
+            "accountId": "0198e2c87e43c6262afa887e",
+            "displayName": "David Williams"
+          },
+          "created": "2026-05-06T08:00:56.000+0000",
+          "project": {
+            "id": "10000",
+            "key": "ENG",
+            "name": "Engineering"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10003",
+        "key": "ENG-4",
+        "fields": {
+          "summary": "Task ENG-4: Feature",
+          "description": "Description for issue ENG-4",
+          "status": {
+            "name": "In Progress",
+            "id": "1"
+          },
+          "priority": {
+            "name": "High",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Story",
+            "id": "10001"
+          },
+          "assignee": {
+            "accountId": "7e49cbb2e35d4e187b0ea64e",
+            "displayName": "Ivy Moore"
+          },
+          "reporter": {
+            "accountId": "178ca086e55641dda5afa182",
+            "displayName": "Grace Miller"
+          },
+          "created": "2026-05-23T10:00:56.000+0000",
+          "project": {
+            "id": "10000",
+            "key": "ENG",
+            "name": "Engineering"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10004",
+        "key": "ENG-5",
+        "fields": {
+          "summary": "Task ENG-5: Bug",
+          "description": "Description for issue ENG-5",
+          "status": {
+            "name": "Done",
+            "id": "1"
+          },
+          "priority": {
+            "name": "Medium",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Task",
+            "id": "10001"
+          },
+          "assignee": null,
+          "reporter": {
+            "accountId": "49c239865504f81dba23a5ab",
+            "displayName": "Emma Brown"
+          },
+          "created": "2026-05-13T21:00:56.000+0000",
+          "project": {
+            "id": "10000",
+            "key": "ENG",
+            "name": "Engineering"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10005",
+        "key": "ENG-6",
+        "fields": {
+          "summary": "Task ENG-6: Feature",
+          "description": "Description for issue ENG-6",
+          "status": {
+            "name": "In Progress",
+            "id": "1"
+          },
+          "priority": {
+            "name": "High",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Story",
+            "id": "10001"
+          },
+          "assignee": {
+            "accountId": "b46977017cf454b42d1e85df",
+            "displayName": "Bob Smith"
+          },
+          "reporter": {
+            "accountId": "3cce8678ddb6803c87968a5f",
+            "displayName": "Jack Taylor"
+          },
+          "created": "2026-05-20T16:00:56.000+0000",
+          "project": {
+            "id": "10000",
+            "key": "ENG",
+            "name": "Engineering"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10006",
+        "key": "ENG-7",
+        "fields": {
+          "summary": "Task ENG-7: Improvement",
+          "description": "Description for issue ENG-7",
+          "status": {
+            "name": "Done",
+            "id": "1"
+          },
+          "priority": {
+            "name": "Low",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Story",
+            "id": "10001"
+          },
+          "assignee": null,
+          "reporter": {
+            "accountId": "178ca086e55641dda5afa182",
+            "displayName": "Grace Miller"
+          },
+          "created": "2026-05-07T17:00:56.000+0000",
+          "project": {
+            "id": "10000",
+            "key": "ENG",
+            "name": "Engineering"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10007",
+        "key": "ENG-8",
+        "fields": {
+          "summary": "Task ENG-8: Improvement",
+          "description": "Description for issue ENG-8",
+          "status": {
+            "name": "In Progress",
+            "id": "1"
+          },
+          "priority": {
+            "name": "Low",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Bug",
+            "id": "10001"
+          },
+          "assignee": {
+            "accountId": "b46977017cf454b42d1e85df",
+            "displayName": "Bob Smith"
+          },
+          "reporter": {
+            "accountId": "0198e2c87e43c6262afa887e",
+            "displayName": "David Williams"
+          },
+          "created": "2026-05-12T00:00:56.000+0000",
+          "project": {
+            "id": "10000",
+            "key": "ENG",
+            "name": "Engineering"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10008",
+        "key": "ENG-9",
+        "fields": {
+          "summary": "Task ENG-9: Improvement",
+          "description": "Description for issue ENG-9",
+          "status": {
+            "name": "In Progress",
+            "id": "1"
+          },
+          "priority": {
+            "name": "Low",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Bug",
+            "id": "10001"
+          },
+          "assignee": {
+            "accountId": "178ca086e55641dda5afa182",
+            "displayName": "Grace Miller"
+          },
+          "reporter": {
+            "accountId": "49c239865504f81dba23a5ab",
+            "displayName": "Emma Brown"
+          },
+          "created": "2026-05-22T22:00:56.000+0000",
+          "project": {
+            "id": "10000",
+            "key": "ENG",
+            "name": "Engineering"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10009",
+        "key": "ENG-10",
+        "fields": {
+          "summary": "Task ENG-10: Feature",
+          "description": "Description for issue ENG-10",
+          "status": {
+            "name": "Done",
+            "id": "1"
+          },
+          "priority": {
+            "name": "Low",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Task",
+            "id": "10001"
+          },
+          "assignee": {
+            "accountId": "178ca086e55641dda5afa182",
+            "displayName": "Grace Miller"
+          },
+          "reporter": {
+            "accountId": "0198e2c87e43c6262afa887e",
+            "displayName": "David Williams"
+          },
+          "created": "2026-05-11T11:00:56.000+0000",
+          "project": {
+            "id": "10000",
+            "key": "ENG",
+            "name": "Engineering"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10000",
+        "key": "SUP-1",
+        "fields": {
+          "summary": "Task SUP-1: Feature",
+          "description": "Description for issue SUP-1",
+          "status": {
+            "name": "In Progress",
+            "id": "1"
+          },
+          "priority": {
+            "name": "Low",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Story",
+            "id": "10001"
+          },
+          "assignee": {
+            "accountId": "0ad2ad42d36a65fc9fbb7365",
+            "displayName": "Alice Chen"
+          },
+          "reporter": {
+            "accountId": "178ca086e55641dda5afa182",
+            "displayName": "Grace Miller"
+          },
+          "created": "2026-05-24T01:00:56.000+0000",
+          "project": {
+            "id": "10001",
+            "key": "SUP",
+            "name": "Support"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10001",
+        "key": "SUP-2",
+        "fields": {
+          "summary": "Task SUP-2: Improvement",
+          "description": "Description for issue SUP-2",
+          "status": {
+            "name": "In Progress",
+            "id": "1"
+          },
+          "priority": {
+            "name": "Low",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Bug",
+            "id": "10001"
+          },
+          "assignee": {
+            "accountId": "d330328d5d04ef6b199bde88",
+            "displayName": "Henry Wilson"
+          },
+          "reporter": {
+            "accountId": "166db001549b0f7dd10ed817",
+            "displayName": "Frank Davis"
+          },
+          "created": "2026-05-12T04:00:56.000+0000",
+          "project": {
+            "id": "10001",
+            "key": "SUP",
+            "name": "Support"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10002",
+        "key": "SUP-3",
+        "fields": {
+          "summary": "Task SUP-3: Improvement",
+          "description": "Description for issue SUP-3",
+          "status": {
+            "name": "In Progress",
+            "id": "1"
+          },
+          "priority": {
+            "name": "High",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Bug",
+            "id": "10001"
+          },
+          "assignee": null,
+          "reporter": {
+            "accountId": "b46977017cf454b42d1e85df",
+            "displayName": "Bob Smith"
+          },
+          "created": "2026-05-11T14:00:56.000+0000",
+          "project": {
+            "id": "10001",
+            "key": "SUP",
+            "name": "Support"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10003",
+        "key": "SUP-4",
+        "fields": {
+          "summary": "Task SUP-4: Feature",
+          "description": "Description for issue SUP-4",
+          "status": {
+            "name": "To Do",
+            "id": "1"
+          },
+          "priority": {
+            "name": "High",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Task",
+            "id": "10001"
+          },
+          "assignee": null,
+          "reporter": {
+            "accountId": "49c239865504f81dba23a5ab",
+            "displayName": "Emma Brown"
+          },
+          "created": "2026-05-27T06:00:56.000+0000",
+          "project": {
+            "id": "10001",
+            "key": "SUP",
+            "name": "Support"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10004",
+        "key": "SUP-5",
+        "fields": {
+          "summary": "Task SUP-5: Improvement",
+          "description": "Description for issue SUP-5",
+          "status": {
+            "name": "Done",
+            "id": "1"
+          },
+          "priority": {
+            "name": "High",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Story",
+            "id": "10001"
+          },
+          "assignee": {
+            "accountId": "b46977017cf454b42d1e85df",
+            "displayName": "Bob Smith"
+          },
+          "reporter": {
+            "accountId": "3cce8678ddb6803c87968a5f",
+            "displayName": "Jack Taylor"
+          },
+          "created": "2026-05-18T21:00:56.000+0000",
+          "project": {
+            "id": "10001",
+            "key": "SUP",
+            "name": "Support"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10005",
+        "key": "SUP-6",
+        "fields": {
+          "summary": "Task SUP-6: Improvement",
+          "description": "Description for issue SUP-6",
+          "status": {
+            "name": "To Do",
+            "id": "1"
+          },
+          "priority": {
+            "name": "High",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Task",
+            "id": "10001"
+          },
+          "assignee": {
+            "accountId": "0198e2c87e43c6262afa887e",
+            "displayName": "David Williams"
+          },
+          "reporter": {
+            "accountId": "178ca086e55641dda5afa182",
+            "displayName": "Grace Miller"
+          },
+          "created": "2026-05-28T14:00:56.000+0000",
+          "project": {
+            "id": "10001",
+            "key": "SUP",
+            "name": "Support"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10006",
+        "key": "SUP-7",
+        "fields": {
+          "summary": "Task SUP-7: Bug",
+          "description": "Description for issue SUP-7",
+          "status": {
+            "name": "To Do",
+            "id": "1"
+          },
+          "priority": {
+            "name": "Low",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Bug",
+            "id": "10001"
+          },
+          "assignee": null,
+          "reporter": {
+            "accountId": "0198e2c87e43c6262afa887e",
+            "displayName": "David Williams"
+          },
+          "created": "2026-05-10T18:00:56.000+0000",
+          "project": {
+            "id": "10001",
+            "key": "SUP",
+            "name": "Support"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10007",
+        "key": "SUP-8",
+        "fields": {
+          "summary": "Task SUP-8: Improvement",
+          "description": "Description for issue SUP-8",
+          "status": {
+            "name": "Done",
+            "id": "1"
+          },
+          "priority": {
+            "name": "Medium",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Task",
+            "id": "10001"
+          },
+          "assignee": {
+            "accountId": "d330328d5d04ef6b199bde88",
+            "displayName": "Henry Wilson"
+          },
+          "reporter": {
+            "accountId": "b46977017cf454b42d1e85df",
+            "displayName": "Bob Smith"
+          },
+          "created": "2026-05-11T18:00:56.000+0000",
+          "project": {
+            "id": "10001",
+            "key": "SUP",
+            "name": "Support"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10008",
+        "key": "SUP-9",
+        "fields": {
+          "summary": "Task SUP-9: Bug",
+          "description": "Description for issue SUP-9",
+          "status": {
+            "name": "To Do",
+            "id": "1"
+          },
+          "priority": {
+            "name": "Low",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Task",
+            "id": "10001"
+          },
+          "assignee": {
+            "accountId": "7e49cbb2e35d4e187b0ea64e",
+            "displayName": "Ivy Moore"
+          },
+          "reporter": {
+            "accountId": "3cce8678ddb6803c87968a5f",
+            "displayName": "Jack Taylor"
+          },
+          "created": "2026-05-19T17:00:56.000+0000",
+          "project": {
+            "id": "10001",
+            "key": "SUP",
+            "name": "Support"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      },
+      {
+        "id": "10009",
+        "key": "SUP-10",
+        "fields": {
+          "summary": "Task SUP-10: Bug",
+          "description": "Description for issue SUP-10",
+          "status": {
+            "name": "Done",
+            "id": "1"
+          },
+          "priority": {
+            "name": "Medium",
+            "id": "2"
+          },
+          "issuetype": {
+            "name": "Story",
+            "id": "10001"
+          },
+          "assignee": null,
+          "reporter": {
+            "accountId": "d330328d5d04ef6b199bde88",
+            "displayName": "Henry Wilson"
+          },
+          "created": "2026-05-25T14:00:56.000+0000",
+          "project": {
+            "id": "10001",
+            "key": "SUP",
+            "name": "Support"
+          },
+          "comment": {
+            "comments": [],
+            "total": 0
+          }
+        }
+      }
+    ]
+  }
+}

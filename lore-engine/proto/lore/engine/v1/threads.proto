@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+// ThreadsService — conversation memory CRUD over gRPC.
+//
+// Covers the three operations the gateway actively proxies today:
+//   GET    /api/threads              → ListThreads
+//   GET    /api/threads/{id}/turns   → ListTurns
+//   DELETE /api/threads/{id}         → DeleteThread
+//
+// Identity (user_id) is supplied by the gateway in call metadata; the engine
+// enforces per-user thread ownership exactly as the HTTP route does.
+package lore.engine.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service ThreadsService {
+  rpc ListThreads(ListThreadsRequest) returns (ListThreadsResponse);
+  rpc ListTurns(ListTurnsRequest) returns (ListTurnsResponse);
+  rpc DeleteThread(DeleteThreadRequest) returns (google.protobuf.Empty);
+}
+
+message Thread {
+  string thread_id = 1;
+  string title = 2;
+  int32 turn_count = 3;
+  int32 total_tokens = 4;
+  string status = 5;
+  string created_at = 6;
+  string updated_at = 7;
+}
+
+message Turn {
+  string turn_id = 1;
+  int32 sequence = 2;
+  string question = 3;
+  optional string answer = 4;        // null when the assistant produced none
+  string status = 5;
+  google.protobuf.Int32Value latency_ms = 6;  // null when unmeasured (streamed)
+  string created_at = 7;
+}
+
+message ListThreadsRequest {
+  int32 limit = 1;                   // default 20, clamped [1, 100]
+  optional string before_id = 2;
+}
+
+message ListThreadsResponse {
+  repeated Thread threads = 1;
+}
+
+message ListTurnsRequest {
+  string thread_id = 1;
+  int32 limit = 2;                   // default 50, clamped [1, 200]
+}
+
+message ListTurnsResponse {
+  repeated Turn turns = 1;
+}
+
+message DeleteThreadRequest {
+  string thread_id = 1;
+}

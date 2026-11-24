@@ -1,0 +1,35 @@
+# ── Data files ──
+output/
+*.npy
+*.zip
+scripts/*_results.json
+scripts/*_results_v*.json
+
+# ── Secrets ──
+.env
+key.json
+
+# ── Python ──
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+
+# ── IDE / OS ──
+.idea/
+.vscode/
+*.swp
+.claude/
+.DS_Store
+
+# CI-vendored chronograph (never commit)
+vendor/*
+!vendor/README.md
+
+# course eval: customer-derived data and outputs (real EZO email text, person names). Never commit.
+benchmarks/rag_eval/data/
+benchmarks/rag_eval/results/graph_eval_*.json
+benchmarks/rag_eval/results/retrieval_eval.json
+.coverage
+coverage.xml
+junit.xml

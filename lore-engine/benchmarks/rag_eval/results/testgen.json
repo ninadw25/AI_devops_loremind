@@ -1,0 +1,30 @@
+[
+ {
+  "module": "domain/context.py",
+  "before": 39.3,
+  "after": 39.3,
+  "kept": false,
+  "attempts": 3
+ },
+ {
+  "module": "domain/sources.py",
+  "before": 40.6,
+  "after": 100.0,
+  "kept": true,
+  "attempts": 2
+ },
+ {
+  "module": "domain/retrieval/person.py",
+  "before": 40.8,
+  "after": 100.0,
+  "kept": true,
+  "attempts": 2
+ },
+ {
+  "module": "domain/scoring.py",
+  "before": 61.9,
+  "after": 100.0,
+  "kept": true,
+  "attempts": 1
+ }
+]

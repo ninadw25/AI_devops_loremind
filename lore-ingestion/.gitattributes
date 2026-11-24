@@ -1,0 +1,1 @@
+# No LFS rules — output/ is fully gitignored, no large files are tracked.

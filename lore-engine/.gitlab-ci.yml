@@ -1,0 +1,78 @@
+# lore-engine pipeline: test -> build -> staging -> production, plus an on-demand RAG evaluation.
+# Deploy is GitOps: the shared template bumps the image tag in root/gitops and ArgoCD rolls it out to
+# loremind-eks (no kubectl, no cluster credentials in CI). See docs/DEPLOY_EKS.md.
+include:
+  - project: root/ci-templates
+    ref: main
+    file: templates/multistage-deploy.yml
+  - project: root/ci-templates
+    ref: main
+    file: templates/quality-python.yml
+  - project: root/ci-templates
+    ref: main
+    file: templates/security.yml
+
+stages:
+  - lint
+  - test
+  - static_tests
+  - build
+  - staging
+  - production
+  - eval
+
+variables:
+  CLUSTER: loremind
+  STAGING_SERVICE: lore-engine-staging   # template maps this to apps/staging/lore-engine.yaml
+  PROD_SERVICE: lore-engine              # -> apps/prod/lore-engine.yaml
+  ECR_REPO: loremind/lore-engine
+  UV_LINK_MODE: copy
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH
+
+lint:
+  extends: .lint-python
+
+# Hard gate (unlike lint): unit tests incl. AI-generated tests in tests/generated, with a coverage floor.
+unit-tests:
+  stage: test
+  image: python:3.12-slim
+  needs: []
+  before_script:
+    - pip install -q uv
+    - uv venv && uv pip install -q -e . pytest pytest-asyncio pytest-cov
+  script:
+    - .venv/bin/python -m pytest tests -q -p no:cacheprovider --cov=domain --cov=services --cov=api
+        --cov-report=term --cov-report=xml:coverage.xml --junitxml=junit.xml --cov-fail-under=65
+  coverage: '/^TOTAL.*\s(\d+)%$/'
+  artifacts:
+    when: always
+    reports:
+      junit: junit.xml
+      coverage_report: {coverage_format: cobertura, path: coverage.xml}
+
+# On demand: graph-RAG vs plain-RAG retrieval benchmark (benchmarks/rag_eval, report in docs/MIDTERM_REPORT.md).
+# Needs a reachable engine + Neo4j; set NEO4J_URI, NEO4J_PASSWORD, NVIDIA_API_KEY, INTERNAL_AUTH_SECRET,
+# ENGINE_URL as masked CI variables. Questions are regenerated from the graph, so no customer data is stored in git.
+rag-eval:
+  stage: eval
+  image: python:3.12-slim
+  needs: []
+  when: manual
+  allow_failure: true
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH   # never on MRs: this job receives the Neo4j and NVIDIA secrets
+      when: manual
+  before_script:
+    - pip install -q uv && uv venv && uv pip install -q neo4j openai requests pyjwt numpy langchain langchain-community faiss-cpu
+  script:
+    - .venv/bin/python -m benchmarks.rag_eval.make_graph_questions
+    - .venv/bin/python -m benchmarks.rag_eval.run_graph_eval --systems node_rag lore
+    - .venv/bin/python -m benchmarks.rag_eval.report
+  artifacts:
+    when: always
+    paths: [benchmarks/rag_eval/results/summary.md]
+    expire_in: 30 days

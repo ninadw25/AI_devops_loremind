@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  wiremock-slack:
+    image: wiremock/wiremock:3.5.2
+    container_name: mock-slack
+    ports:
+      - "8090:8080"
+    volumes:
+      - ./slack/mappings:/home/wiremock/mappings
+      - ./slack/__files:/home/wiremock/__files
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/__admin/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  wiremock-jira:
+    image: wiremock/wiremock:3.5.2
+    container_name: mock-jira
+    ports:
+      - "8091:8080"
+    volumes:
+      - ./jira/mappings:/home/wiremock/mappings
+      - ./jira/__files:/home/wiremock/__files
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/__admin/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 10

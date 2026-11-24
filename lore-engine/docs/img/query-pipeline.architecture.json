@@ -1,0 +1,219 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Lore GraphRAG Query Pipeline",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "hidden"
+    }
+  },
+  "lanes": [
+    {
+      "id": "analyze",
+      "label": "Understand: LLM"
+    },
+    {
+      "id": "embed",
+      "label": "Gateway and embedding"
+    },
+    {
+      "id": "graph",
+      "label": "Neo4j retrieval"
+    },
+    {
+      "id": "answer",
+      "label": "Rank and answer"
+    }
+  ],
+  "mainPath": [
+    "q",
+    "embed",
+    "seeds",
+    "expand",
+    "rank",
+    "ctx",
+    "synth",
+    "answer"
+  ],
+  "nodes": [
+    {
+      "id": "q",
+      "lane": "embed",
+      "col": 0,
+      "type": "security",
+      "label": "1 Question + gate",
+      "sublabel": "X-Internal-Auth, scope_ids",
+      "width": 160
+    },
+    {
+      "id": "analyze",
+      "lane": "analyze",
+      "col": 1,
+      "type": "backend",
+      "label": "2a Query analysis",
+      "sublabel": "800 ms, else keywords",
+      "width": 160
+    },
+    {
+      "id": "embed",
+      "lane": "embed",
+      "col": 1,
+      "type": "cloud",
+      "label": "2b Embed question",
+      "sublabel": "nemotron-3-embed-1b",
+      "width": 160
+    },
+    {
+      "id": "seeds",
+      "lane": "graph",
+      "col": 2,
+      "type": "database",
+      "label": "3 Seeds",
+      "sublabel": "vector top-30 + anchors",
+      "width": 160
+    },
+    {
+      "id": "expand",
+      "lane": "graph",
+      "col": 3,
+      "type": "database",
+      "label": "4 Graph expansion",
+      "sublabel": "beam 30, depth 3, priors",
+      "width": 160
+    },
+    {
+      "id": "rank",
+      "lane": "answer",
+      "col": 3,
+      "type": "backend",
+      "label": "5 Rerank",
+      "sublabel": "BM25 + cross-enc.",
+      "width": 160
+    },
+    {
+      "id": "ctx",
+      "lane": "answer",
+      "col": 4,
+      "type": "backend",
+      "label": "6 Context",
+      "sublabel": "8000 tokens, [ref:]",
+      "width": 160
+    },
+    {
+      "id": "synth",
+      "lane": "answer",
+      "col": 5,
+      "type": "cloud",
+      "label": "7 Synthesis",
+      "sublabel": "LLM, token stream",
+      "width": 160
+    },
+    {
+      "id": "answer",
+      "lane": "embed",
+      "col": 5,
+      "type": "frontend",
+      "label": "Answer + sources",
+      "sublabel": "SSE events",
+      "width": 160
+    }
+  ],
+  "edges": [
+    {
+      "id": "q-embed",
+      "from": "q",
+      "to": "embed",
+      "variant": "emphasis",
+      "role": "main",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "q-analyze",
+      "from": "q",
+      "to": "analyze",
+      "variant": "default",
+      "role": "branch",
+      "fromSide": "top",
+      "toSide": "left"
+    },
+    {
+      "id": "analyze-seeds",
+      "from": "analyze",
+      "to": "seeds",
+      "label": "entities",
+      "variant": "default",
+      "role": "branch",
+      "fromSide": "right",
+      "toSide": "top"
+    },
+    {
+      "id": "embed-seeds",
+      "from": "embed",
+      "to": "seeds",
+      "variant": "emphasis",
+      "role": "main",
+      "fromSide": "bottom",
+      "toSide": "left"
+    },
+    {
+      "id": "seeds-expand",
+      "from": "seeds",
+      "to": "expand",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "expand-rank",
+      "from": "expand",
+      "to": "rank",
+      "label": "chunks",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "rank-ctx",
+      "from": "rank",
+      "to": "ctx",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "ctx-synth",
+      "from": "ctx",
+      "to": "synth",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "synth-answer",
+      "from": "synth",
+      "to": "answer",
+      "label": "stream",
+      "variant": "emphasis",
+      "role": "return"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Why this beats plain vector RAG",
+      "items": [
+        "Anchors start the walk even if the question embeds poorly",
+        "BECAUSE and DECIDED edges pull in the Decisions and Facts behind a hit",
+        "Scope gate sits in every Cypher query: no leak via a path",
+        "Fallbacks: analysis timeout, reranker error degrade, never stall"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "References",
+      "items": [
+        "Lewis 2020, arXiv 2005.11401 (steps 3, 7); Edge 2024 GraphRAG, 2404.16130",
+        "HippoRAG, 2405.14831 (seeds then graph walk); Han 2025, 2502.11371",
+        "Barnett 2024, 2401.05856 (steps 5, 6)"
+      ]
+    }
+  ]
+}

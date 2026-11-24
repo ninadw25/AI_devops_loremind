@@ -1,0 +1,76 @@
+# ── Data files (too large for git) ──
+builders/graph/dataset/
+extraction_batches/
+extraction_results/
+output
+
+neo4j_data.tar.gz
+
+#Evaluation
+evaluation/*.json
+
+knowledge_distillation/output
+knowledge_distillation/sft_dataset/
+knowledge_distillation/assignments.json
+
+
+# ── Zip archives (data snapshots, not code) ──
+*.zip
+
+# ── Generated Cypher + dataset copies (regenerable) ──
+gmail/ontology_approach/output/
+gmail/ontology_approach/dataset/
+
+# ── Generated reports / analysis (regenerable from scripts) ──
+# output/ontology_data_summary*.md
+# gmail/test_threads_for_ontology.md
+
+# ── Chat/conversation dumps (not code docs) ──
+gmail/ontology_approach/chat_sum.md
+gmail/ontology_approach/error_chunk.md
+# gmail/ontology_approach/explanation_generate_chunk.md
+gmail/ontology_approach/generalise.md
+# Loremind_Query_Pipeline.md
+
+# ── Old phase_3 output ──
+gmail/phase_3/phase_3/output/
+
+# ── Chronograph data ──
+chronograph/data/repos/
+chronograph/data/blobs/
+
+# ── Generated data files (re-fetchable from API) ──
+gitlab/gitlab_data/*/source_code.json
+gitlab/gitlab_data/*/parsed_symbols.json
+output/raw
+knowledge_distillation/output
+
+# ── Secrets ──
+# Each of these was committed at least once (see docs/security/VULNERABILITY.md
+# §3) and had to be rotated. Ignore them by name so a re-add cannot repeat it.
+key.json
+.env
+.env.*
+!.env.example
+google-service-key.json
+*-service-key.json
+*service-account*.json
+container-app.yaml
+credentials.json
+token.json
+*.pem
+!certs/*.pem
+
+# ── Node ──
+node_modules/
+
+# ── Python ──
+__pycache__/
+*.pyc
+.venv/
+
+# ── IDE / OS ──
+.idea/
+.vscode/
+*.swp
+.claude/

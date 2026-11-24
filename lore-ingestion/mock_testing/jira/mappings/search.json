@@ -1,0 +1,755 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/rest/api/3/search"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "startAt": 0,
+      "maxResults": 100,
+      "total": 20,
+      "issues": [
+        {
+          "id": "10000",
+          "key": "ENG-1",
+          "fields": {
+            "summary": "Task ENG-1: Feature",
+            "description": "Description for issue ENG-1",
+            "status": {
+              "name": "In Progress",
+              "id": "1"
+            },
+            "priority": {
+              "name": "High",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Task",
+              "id": "10001"
+            },
+            "assignee": null,
+            "reporter": {
+              "accountId": "0198e2c87e43c6262afa887e",
+              "displayName": "David Williams"
+            },
+            "created": "2026-05-07T12:00:56.000+0000",
+            "project": {
+              "id": "10000",
+              "key": "ENG",
+              "name": "Engineering"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10001",
+          "key": "ENG-2",
+          "fields": {
+            "summary": "Task ENG-2: Bug",
+            "description": "Description for issue ENG-2",
+            "status": {
+              "name": "To Do",
+              "id": "1"
+            },
+            "priority": {
+              "name": "High",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Bug",
+              "id": "10001"
+            },
+            "assignee": null,
+            "reporter": {
+              "accountId": "0198e2c87e43c6262afa887e",
+              "displayName": "David Williams"
+            },
+            "created": "2026-05-18T23:00:56.000+0000",
+            "project": {
+              "id": "10000",
+              "key": "ENG",
+              "name": "Engineering"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10002",
+          "key": "ENG-3",
+          "fields": {
+            "summary": "Task ENG-3: Bug",
+            "description": "Description for issue ENG-3",
+            "status": {
+              "name": "In Progress",
+              "id": "1"
+            },
+            "priority": {
+              "name": "Low",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Story",
+              "id": "10001"
+            },
+            "assignee": {
+              "accountId": "49c239865504f81dba23a5ab",
+              "displayName": "Emma Brown"
+            },
+            "reporter": {
+              "accountId": "0198e2c87e43c6262afa887e",
+              "displayName": "David Williams"
+            },
+            "created": "2026-05-06T08:00:56.000+0000",
+            "project": {
+              "id": "10000",
+              "key": "ENG",
+              "name": "Engineering"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10003",
+          "key": "ENG-4",
+          "fields": {
+            "summary": "Task ENG-4: Feature",
+            "description": "Description for issue ENG-4",
+            "status": {
+              "name": "In Progress",
+              "id": "1"
+            },
+            "priority": {
+              "name": "High",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Story",
+              "id": "10001"
+            },
+            "assignee": {
+              "accountId": "7e49cbb2e35d4e187b0ea64e",
+              "displayName": "Ivy Moore"
+            },
+            "reporter": {
+              "accountId": "178ca086e55641dda5afa182",
+              "displayName": "Grace Miller"
+            },
+            "created": "2026-05-23T10:00:56.000+0000",
+            "project": {
+              "id": "10000",
+              "key": "ENG",
+              "name": "Engineering"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10004",
+          "key": "ENG-5",
+          "fields": {
+            "summary": "Task ENG-5: Bug",
+            "description": "Description for issue ENG-5",
+            "status": {
+              "name": "Done",
+              "id": "1"
+            },
+            "priority": {
+              "name": "Medium",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Task",
+              "id": "10001"
+            },
+            "assignee": null,
+            "reporter": {
+              "accountId": "49c239865504f81dba23a5ab",
+              "displayName": "Emma Brown"
+            },
+            "created": "2026-05-13T21:00:56.000+0000",
+            "project": {
+              "id": "10000",
+              "key": "ENG",
+              "name": "Engineering"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10005",
+          "key": "ENG-6",
+          "fields": {
+            "summary": "Task ENG-6: Feature",
+            "description": "Description for issue ENG-6",
+            "status": {
+              "name": "In Progress",
+              "id": "1"
+            },
+            "priority": {
+              "name": "High",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Story",
+              "id": "10001"
+            },
+            "assignee": {
+              "accountId": "b46977017cf454b42d1e85df",
+              "displayName": "Bob Smith"
+            },
+            "reporter": {
+              "accountId": "3cce8678ddb6803c87968a5f",
+              "displayName": "Jack Taylor"
+            },
+            "created": "2026-05-20T16:00:56.000+0000",
+            "project": {
+              "id": "10000",
+              "key": "ENG",
+              "name": "Engineering"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10006",
+          "key": "ENG-7",
+          "fields": {
+            "summary": "Task ENG-7: Improvement",
+            "description": "Description for issue ENG-7",
+            "status": {
+              "name": "Done",
+              "id": "1"
+            },
+            "priority": {
+              "name": "Low",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Story",
+              "id": "10001"
+            },
+            "assignee": null,
+            "reporter": {
+              "accountId": "178ca086e55641dda5afa182",
+              "displayName": "Grace Miller"
+            },
+            "created": "2026-05-07T17:00:56.000+0000",
+            "project": {
+              "id": "10000",
+              "key": "ENG",
+              "name": "Engineering"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10007",
+          "key": "ENG-8",
+          "fields": {
+            "summary": "Task ENG-8: Improvement",
+            "description": "Description for issue ENG-8",
+            "status": {
+              "name": "In Progress",
+              "id": "1"
+            },
+            "priority": {
+              "name": "Low",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Bug",
+              "id": "10001"
+            },
+            "assignee": {
+              "accountId": "b46977017cf454b42d1e85df",
+              "displayName": "Bob Smith"
+            },
+            "reporter": {
+              "accountId": "0198e2c87e43c6262afa887e",
+              "displayName": "David Williams"
+            },
+            "created": "2026-05-12T00:00:56.000+0000",
+            "project": {
+              "id": "10000",
+              "key": "ENG",
+              "name": "Engineering"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10008",
+          "key": "ENG-9",
+          "fields": {
+            "summary": "Task ENG-9: Improvement",
+            "description": "Description for issue ENG-9",
+            "status": {
+              "name": "In Progress",
+              "id": "1"
+            },
+            "priority": {
+              "name": "Low",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Bug",
+              "id": "10001"
+            },
+            "assignee": {
+              "accountId": "178ca086e55641dda5afa182",
+              "displayName": "Grace Miller"
+            },
+            "reporter": {
+              "accountId": "49c239865504f81dba23a5ab",
+              "displayName": "Emma Brown"
+            },
+            "created": "2026-05-22T22:00:56.000+0000",
+            "project": {
+              "id": "10000",
+              "key": "ENG",
+              "name": "Engineering"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10009",
+          "key": "ENG-10",
+          "fields": {
+            "summary": "Task ENG-10: Feature",
+            "description": "Description for issue ENG-10",
+            "status": {
+              "name": "Done",
+              "id": "1"
+            },
+            "priority": {
+              "name": "Low",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Task",
+              "id": "10001"
+            },
+            "assignee": {
+              "accountId": "178ca086e55641dda5afa182",
+              "displayName": "Grace Miller"
+            },
+            "reporter": {
+              "accountId": "0198e2c87e43c6262afa887e",
+              "displayName": "David Williams"
+            },
+            "created": "2026-05-11T11:00:56.000+0000",
+            "project": {
+              "id": "10000",
+              "key": "ENG",
+              "name": "Engineering"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10000",
+          "key": "SUP-1",
+          "fields": {
+            "summary": "Task SUP-1: Feature",
+            "description": "Description for issue SUP-1",
+            "status": {
+              "name": "In Progress",
+              "id": "1"
+            },
+            "priority": {
+              "name": "Low",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Story",
+              "id": "10001"
+            },
+            "assignee": {
+              "accountId": "0ad2ad42d36a65fc9fbb7365",
+              "displayName": "Alice Chen"
+            },
+            "reporter": {
+              "accountId": "178ca086e55641dda5afa182",
+              "displayName": "Grace Miller"
+            },
+            "created": "2026-05-24T01:00:56.000+0000",
+            "project": {
+              "id": "10001",
+              "key": "SUP",
+              "name": "Support"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10001",
+          "key": "SUP-2",
+          "fields": {
+            "summary": "Task SUP-2: Improvement",
+            "description": "Description for issue SUP-2",
+            "status": {
+              "name": "In Progress",
+              "id": "1"
+            },
+            "priority": {
+              "name": "Low",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Bug",
+              "id": "10001"
+            },
+            "assignee": {
+              "accountId": "d330328d5d04ef6b199bde88",
+              "displayName": "Henry Wilson"
+            },
+            "reporter": {
+              "accountId": "166db001549b0f7dd10ed817",
+              "displayName": "Frank Davis"
+            },
+            "created": "2026-05-12T04:00:56.000+0000",
+            "project": {
+              "id": "10001",
+              "key": "SUP",
+              "name": "Support"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10002",
+          "key": "SUP-3",
+          "fields": {
+            "summary": "Task SUP-3: Improvement",
+            "description": "Description for issue SUP-3",
+            "status": {
+              "name": "In Progress",
+              "id": "1"
+            },
+            "priority": {
+              "name": "High",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Bug",
+              "id": "10001"
+            },
+            "assignee": null,
+            "reporter": {
+              "accountId": "b46977017cf454b42d1e85df",
+              "displayName": "Bob Smith"
+            },
+            "created": "2026-05-11T14:00:56.000+0000",
+            "project": {
+              "id": "10001",
+              "key": "SUP",
+              "name": "Support"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10003",
+          "key": "SUP-4",
+          "fields": {
+            "summary": "Task SUP-4: Feature",
+            "description": "Description for issue SUP-4",
+            "status": {
+              "name": "To Do",
+              "id": "1"
+            },
+            "priority": {
+              "name": "High",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Task",
+              "id": "10001"
+            },
+            "assignee": null,
+            "reporter": {
+              "accountId": "49c239865504f81dba23a5ab",
+              "displayName": "Emma Brown"
+            },
+            "created": "2026-05-27T06:00:56.000+0000",
+            "project": {
+              "id": "10001",
+              "key": "SUP",
+              "name": "Support"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10004",
+          "key": "SUP-5",
+          "fields": {
+            "summary": "Task SUP-5: Improvement",
+            "description": "Description for issue SUP-5",
+            "status": {
+              "name": "Done",
+              "id": "1"
+            },
+            "priority": {
+              "name": "High",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Story",
+              "id": "10001"
+            },
+            "assignee": {
+              "accountId": "b46977017cf454b42d1e85df",
+              "displayName": "Bob Smith"
+            },
+            "reporter": {
+              "accountId": "3cce8678ddb6803c87968a5f",
+              "displayName": "Jack Taylor"
+            },
+            "created": "2026-05-18T21:00:56.000+0000",
+            "project": {
+              "id": "10001",
+              "key": "SUP",
+              "name": "Support"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10005",
+          "key": "SUP-6",
+          "fields": {
+            "summary": "Task SUP-6: Improvement",
+            "description": "Description for issue SUP-6",
+            "status": {
+              "name": "To Do",
+              "id": "1"
+            },
+            "priority": {
+              "name": "High",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Task",
+              "id": "10001"
+            },
+            "assignee": {
+              "accountId": "0198e2c87e43c6262afa887e",
+              "displayName": "David Williams"
+            },
+            "reporter": {
+              "accountId": "178ca086e55641dda5afa182",
+              "displayName": "Grace Miller"
+            },
+            "created": "2026-05-28T14:00:56.000+0000",
+            "project": {
+              "id": "10001",
+              "key": "SUP",
+              "name": "Support"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10006",
+          "key": "SUP-7",
+          "fields": {
+            "summary": "Task SUP-7: Bug",
+            "description": "Description for issue SUP-7",
+            "status": {
+              "name": "To Do",
+              "id": "1"
+            },
+            "priority": {
+              "name": "Low",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Bug",
+              "id": "10001"
+            },
+            "assignee": null,
+            "reporter": {
+              "accountId": "0198e2c87e43c6262afa887e",
+              "displayName": "David Williams"
+            },
+            "created": "2026-05-10T18:00:56.000+0000",
+            "project": {
+              "id": "10001",
+              "key": "SUP",
+              "name": "Support"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10007",
+          "key": "SUP-8",
+          "fields": {
+            "summary": "Task SUP-8: Improvement",
+            "description": "Description for issue SUP-8",
+            "status": {
+              "name": "Done",
+              "id": "1"
+            },
+            "priority": {
+              "name": "Medium",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Task",
+              "id": "10001"
+            },
+            "assignee": {
+              "accountId": "d330328d5d04ef6b199bde88",
+              "displayName": "Henry Wilson"
+            },
+            "reporter": {
+              "accountId": "b46977017cf454b42d1e85df",
+              "displayName": "Bob Smith"
+            },
+            "created": "2026-05-11T18:00:56.000+0000",
+            "project": {
+              "id": "10001",
+              "key": "SUP",
+              "name": "Support"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10008",
+          "key": "SUP-9",
+          "fields": {
+            "summary": "Task SUP-9: Bug",
+            "description": "Description for issue SUP-9",
+            "status": {
+              "name": "To Do",
+              "id": "1"
+            },
+            "priority": {
+              "name": "Low",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Task",
+              "id": "10001"
+            },
+            "assignee": {
+              "accountId": "7e49cbb2e35d4e187b0ea64e",
+              "displayName": "Ivy Moore"
+            },
+            "reporter": {
+              "accountId": "3cce8678ddb6803c87968a5f",
+              "displayName": "Jack Taylor"
+            },
+            "created": "2026-05-19T17:00:56.000+0000",
+            "project": {
+              "id": "10001",
+              "key": "SUP",
+              "name": "Support"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        },
+        {
+          "id": "10009",
+          "key": "SUP-10",
+          "fields": {
+            "summary": "Task SUP-10: Bug",
+            "description": "Description for issue SUP-10",
+            "status": {
+              "name": "Done",
+              "id": "1"
+            },
+            "priority": {
+              "name": "Medium",
+              "id": "2"
+            },
+            "issuetype": {
+              "name": "Story",
+              "id": "10001"
+            },
+            "assignee": null,
+            "reporter": {
+              "accountId": "d330328d5d04ef6b199bde88",
+              "displayName": "Henry Wilson"
+            },
+            "created": "2026-05-25T14:00:56.000+0000",
+            "project": {
+              "id": "10001",
+              "key": "SUP",
+              "name": "Support"
+            },
+            "comment": {
+              "comments": [],
+              "total": 0
+            }
+          }
+        }
+      ]
+    }
+  }
+}

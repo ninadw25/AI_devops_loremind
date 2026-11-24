@@ -1,0 +1,101 @@
+[project]
+name = "lore-backend"
+version = "4.0.0"
+description = "Lore Backend — Knowledge query API with hybrid vector+graph search"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+    "numpy>=1.26.0",
+    "requests>=2.31.0",
+    "openai>=1.30.0",
+    "PyJWT>=2.8.0",
+    "neo4j>=5.20.0",
+    "pgvector>=0.3.0",
+    "python-ulid>=2.0.0",
+    "slowapi>=0.1.9",
+    "asyncpg>=0.29.0",
+    "sqlalchemy[asyncio]>=2.0.0,<2.1",  # 2.1 defaults to psycopg3; chronograph PgStore needs psycopg2
+    "alembic>=1.13.0",
+    "boto3>=1.34.0",
+    # gRPC transport for the gateway → engine core query path (LOR-111).
+    # grpcio was only a transitive dep (via langfuse→opentelemetry) before; it
+    # is now declared explicitly because lore_engine_grpc/ imports it directly.
+    #
+    # The committed gencode (lore_engine_grpc/gen/) was regenerated with
+    # grpcio-tools 1.80.x and declares protobuf 6.31.1. protobuf's runtime
+    # version check requires the runtime to be >= the gencode version, so these
+    # floors are what the gencode *actually* needs — not the pre-gRPC guesses.
+    # 6.x gencode also loads under a 7.x runtime (protobuf cross-version
+    # guarantee), and it still satisfies observability's protobuf<7.0 cap
+    # (langfuse→opentelemetry-proto), so it works in either resolved tree.
+    "grpcio>=1.80.0",
+    "protobuf>=6.31.1",
+
+    # Security floors for transitive deps. Pulled in by the packages above, not
+    # used directly — pinned only so a fresh resolve cannot land on a version
+    # with a known advisory. Raise, never lower.
+    "cryptography>=48.0.1",   # GHSA-537c-gmf6-5ccf
+    "urllib3>=2.7.0",         # CVE-2026-44431, CVE-2026-44432
+]
+
+[project.optional-dependencies]
+# Vendored chronograph (GitLab code intel) — PgStore uses the sync psycopg2
+# driver; the chronograph package itself is copied into the image by CI
+# (see .gitlab-ci.yml vendor step + Dockerfile).
+chronograph = [
+    "psycopg2-binary>=2.9.0",
+]
+local-embeddings = [
+    "sentence-transformers>=2.2.0",
+    "torch>=2.0.0",
+]
+# Query pipeline v2 ranking stage (docs/QUERY_PIPELINE_V2.md).
+# rank-bm25 is pure-Python; flashrank is ONNX/CPU (no GPU/torch needed).
+rerank = [
+    "rank-bm25>=0.2.2",
+    "flashrank>=0.2.9",
+]
+test = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "httpx>=0.27.0",
+]
+# Regenerate the Python gRPC bindings in lore_engine_grpc/gen/ from the .proto
+# files in proto/. Not needed at runtime (generated code is committed) — only
+# when the protos change. Run:  uv run --extra grpc-codegen python scripts/gen_grpc.py
+#
+# PINNED to 1.80.x on purpose: the committed gencode must declare protobuf 6.x
+# (not 7.x) so it loads under the protobuf<7.0 cap that observability pulls in
+# transitively (langfuse→opentelemetry-proto). 1.81+ emits 7.x gencode and
+# breaks that environment — do not bump without re-checking the resolved tree.
+grpc-codegen = [
+    "grpcio-tools>=1.80.0,<1.81.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["api*", "core*", "infra*", "memory*", "domain*", "common*", "services*", "lore_engine_grpc*"]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+# Core correctness (pyflakes F, critical pycodestyle E4/E7/E9) + import sort (I).
+# Expanded incrementally as legacy debt is paid down. Line length (E5/E501) is
+# intentionally NOT linted here — enforce via `ruff format` in a separate pass.
+select = ["E4", "E7", "E9", "F", "I"]
+ignore = [
+  "E402",  # module-import-not-at-top — intentional in config/sys.path modules
+  "E702",  # semicolon one-liners — pre-existing
+  "E731",  # lambda-assignment — pre-existing
+  "F841",  # unused-variable — pre-existing; project source not edited in this pass
+]

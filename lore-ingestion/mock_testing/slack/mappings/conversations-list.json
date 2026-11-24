@@ -1,0 +1,41 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/conversations.list"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "ok": true,
+      "channels": [
+        {
+          "id": "C12345678",
+          "name": "engineering",
+          "is_channel": true,
+          "is_private": false
+        },
+        {
+          "id": "C23456789",
+          "name": "general",
+          "is_channel": true,
+          "is_private": false
+        },
+        {
+          "id": "C34567890",
+          "name": "product",
+          "is_channel": true,
+          "is_private": false
+        },
+        {
+          "id": "G12345678",
+          "name": "leadership",
+          "is_channel": false,
+          "is_private": true
+        }
+      ]
+    }
+  }
+}

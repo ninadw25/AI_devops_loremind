@@ -1,0 +1,35 @@
+# CI for lore-ingestion — QUALITY AND SECURITY REPORTING ONLY. No build, no deploy.
+#
+# This service is not on ECS: it runs natively on the Neo4j EC2 box (control API
+# on :8100, VPC-only — see infra/ec2.tf), deployed by hand. There is no image to
+# build and no ECS service to redeploy, so there is deliberately no build/deploy
+# stage here. Adding one is a real project (containerise + add to
+# infra/services.tf), not a CI change.
+#
+# Both stages are WARN-ONLY: every job is allow_failure, so findings are
+# reported and the pipeline still passes. Nothing here can block a merge.
+#
+# Required project CI/CD variables: none.
+#
+# Note: .github/workflows/ still holds the jira-smoke and
+# slack-discovery-idempotency test workflows from before this repo moved to
+# GitLab. They do not run here. Porting them into a `test` stage is worth doing
+# separately.
+
+include:
+  - project: root/ci-templates
+    ref: main
+    file: templates/quality-python.yml
+  - project: root/ci-templates
+    ref: main
+    file: templates/security.yml
+
+stages:
+  - lint
+  - static_tests
+
+# No [tool.ruff] in pyproject.toml yet, so ruff runs its defaults (E4/E7/E9/F).
+# Adopting a rule set (copy lore-engine's [tool.ruff] block) is a separate,
+# dev-owned change — this job just makes the current state visible.
+lint:
+  extends: .lint-python

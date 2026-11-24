@@ -1,0 +1,24 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/api/.*",
+    "headers": {
+      "X-Simulate-Rate-Limit": {
+        "equalTo": "true"
+      }
+    }
+  },
+  "response": {
+    "status": 429,
+    "headers": {
+      "Content-Type": "application/json",
+      "Retry-After": "60"
+    },
+    "jsonBody": {
+      "ok": false,
+      "error": "rate_limited",
+      "message": "Too many requests"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+# HTTPS (Let's Encrypt) + one shared password for the whole site.
+# The engine's internal secret is added here, server-side, so it never reaches the browser.
+{$DEMO_HOST} {
+	encode gzip
+	basic_auth {
+		{$DEMO_USER} {$DEMO_HASH}
+	}
+	handle /api/* {
+		reverse_proxy engine:8000 {
+			header_up X-Internal-Auth {$INTERNAL_AUTH_SECRET}
+			header_up Authorization {http.request.header.X-Lore-Token}
+			header_up -X-Lore-Token
+			flush_interval -1
+		}
+	}
+	handle {
+		root * /srv/ui
+		try_files {path} /index.html
+		file_server
+	}
+}

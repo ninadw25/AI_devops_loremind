@@ -1,0 +1,17 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/rest/api/3/myself"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "accountId": "sysadmin",
+      "displayName": "System Admin",
+      "emailAddress": "admin@techtest.io"
+    }
+  }
+}

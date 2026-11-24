@@ -1,0 +1,84 @@
+[project]
+name = "lore-ingestion"
+version = "3.0.0"
+description = "Knowledge ingestion pipeline — Gmail + GitLab → Neo4j graph + vector index"
+requires-python = ">=3.12"
+dependencies = [
+    # Core
+    "pydantic>=2.12.5",
+    "pydantic-settings>=2.0",
+    "python-dotenv>=1.2.2",
+    "requests>=2.32.0",
+    "numpy>=1.26.0",
+
+    # Control API (control/ — trigger + monitor ingestion runs)
+    "fastapi>=0.115.0",
+    "uvicorn>=0.30.0",
+
+    # Gmail pipeline
+    "google-api-python-client>=2.192.0",
+    "google-auth>=2.49.0",
+
+    # LLM clients
+    "openai>=2.26.0",        # OpenRouter (extraction + embeddings) and OpenAI
+    "anthropic>=0.84.0",     # optional Claude path in pipeline/filter.py
+
+    # Validator + post-processor
+    "rapidfuzz>=3.0.0",      # fuzzy person name resolution
+    "scikit-learn>=1.8.0",   # KMeans fallback in topic clustering
+    "hdbscan>=0.8.33",       # primary clustering for topic taxonomy
+    "scipy>=1.11.0",         # connected_components for entity dedup
+    "sentence-transformers>=5.2.3",  # local embedding fallback
+
+    # Chronograph (GitLab code intelligence)
+    "tree-sitter>=0.23.0",
+    "tree-sitter-python>=0.23.0",
+    "tree-sitter-javascript>=0.23.0",
+    "tree-sitter-typescript>=0.23.0",
+    "tree-sitter-go>=0.23.0",
+    "tree-sitter-rust>=0.23.0",
+    "tree-sitter-java>=0.23.0",
+    "tree-sitter-c>=0.23.0",
+    "tree-sitter-cpp>=0.23.0",
+    "apscheduler>=3.0.0",
+
+    # Neo4j graph projection (builders/unified_builder.py, project_claims.py, slack_delta.py)
+    "neo4j>=5.20.0",
+
+    # Chronograph PostgreSQL + pgvector store
+    "sqlalchemy>=2.0.0",
+    "psycopg2-binary>=2.9.0",
+    "pgvector>=0.3.0",
+    "alembic>=1.13.0",
+
+    # Agentic research layer
+    "langchain>=0.3.0",
+    "langchain-core>=0.3.0",
+    "langchain-openai>=0.3.0",
+    "langgraph>=0.2.0",
+
+    # Security floors for transitive deps. These are pulled in by the packages
+    # above, not used directly — pinned here only so a fresh resolve cannot
+    # land on a version with a known advisory. Raise, never lower.
+    "cryptography>=48.0.1",   # GHSA-537c-gmf6-5ccf
+    "urllib3>=2.7.0",         # CVE-2026-44431, CVE-2026-44432
+    "pyasn1>=0.6.4",          # CVE-2026-30922, 59885, 59886
+    "httplib2>=0.32.0",       # CVE-2026-59939
+    "transformers>=5.3.0",    # CVE-2026-4372, 5241 (only via sentence-transformers)
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = [
+    "agent", "chronograph", "common", "infra",
+    "pipeline", "builders", "runners", "evaluation",
+]
+
+[project.scripts]
+ingest  = "runners.ingest_once:main"
+poller  = "runners.chronograph_poller:main"
+agent   = "agent.run:main"
+sync    = "runners.sync:main"

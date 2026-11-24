@@ -1,0 +1,21 @@
+# Secret-leak prevention. Twelve live production credentials reached this
+# repo's history once (docs/security/VULNERABILITY.md §3); .gitignore stops the
+# known filenames, this stops the shapes.
+#
+# Install once per clone:  pre-commit install
+# Run against everything:  pre-commit run --all-files
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      # Blocks .env, key.json and friends by content/type, not just by name.
+      - id: detect-private-key
+      # A 165KB CA bundle is legitimate; a 5MB dump of customer mail is not.
+      - id: check-added-large-files
+        args: ["--maxkb=2048"]
+      - id: check-merge-conflict

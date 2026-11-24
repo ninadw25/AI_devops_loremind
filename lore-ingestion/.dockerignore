@@ -1,0 +1,34 @@
+output/
+.env
+key.json
+google-service-key.json
+*.jsonl
+*.npy
+__pycache__/
+.git/
+.venv/
+.claude/
+logs/
+gmail/
+scripts/
+tests/
+*.pyc
+*.md
+*.lock
+.gitignore
+.python-version
+pyproject.toml
+uv.lock
+
+# Ingestion-only modules (not needed for query server)
+knowledge/tier1_extractor.py
+knowledge/merge_pipeline.py
+chronograph/ingestion/
+chronograph/parsing/
+chronograph/mcp/
+chronograph/content/
+chronograph/graph/
+
+# Large data
+gitlab/gitlab_data/
+chronograph/data/

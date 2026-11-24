@@ -1,0 +1,44 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/conversations.history",
+    "queryParameters": {
+      "channel": {
+        "equalTo": "G12345678"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "ok": true,
+      "messages": [
+        {
+          "type": "message",
+          "channel_id": "G12345678",
+          "user": "U10001",
+          "text": "@leadership Q3 OKRs need final review",
+          "ts": "1700008000.000001"
+        },
+        {
+          "type": "message",
+          "channel_id": "G12345678",
+          "user": "U10002",
+          "text": "Lets sync on budget allocation tomorrow",
+          "ts": "1700008001.000002"
+        },
+        {
+          "type": "message",
+          "channel_id": "G12345678",
+          "user": "U10005",
+          "text": "Ping me when you decide on the hire",
+          "ts": "1700008002.000003"
+        }
+      ],
+      "has_more": false
+    }
+  }
+}

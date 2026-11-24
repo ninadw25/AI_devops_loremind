@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+// QueryService — the gateway → engine core query path (gRPC).
+//
+// This is the typed contract that replaces the prior untyped HTTP/JSON + SSE
+// hop for Query / QueryStream. The streaming event ordering is a hard contract
+// the frontend depends on: thread_id → sources → token* → done.
+package lore.engine.v1;
+
+import "lore/engine/v1/common.proto";
+import "google/protobuf/struct.proto";
+
+service QueryService {
+  // Blocking query. Returns the full answer + sources + stats.
+  rpc Query(QueryRequest) returns (QueryResponse);
+
+  // Server-streaming query. Emits QueryStreamEvent messages in the fixed
+  // ordering: thread_id, sources (once), token (zero or more), done.
+  // Mid-stream failures arrive as the `error` oneof case (in-band), matching
+  // the HTTP path which returns HTTP 200 with an {"type":"error"} SSE event.
+  rpc QueryStream(QueryRequest) returns (stream QueryStreamEvent);
+}
+
+// This message has NO scope fields, full stop — not "empty by convention",
+// structurally absent from the schema. Scopes travel in gRPC call metadata
+// (x-scope-ids / x-scope-all-ids / x-super-admin), populated exclusively by
+// the gateway after it authenticates the caller, mirroring how identity
+// (x-user-id / x-org / x-role) already travels outside the message body.
+message QueryRequest {
+  string query = 1;              // enforced ≤ 1000 chars by the servicer
+  optional string thread_id = 2;
+  int32 k = 3;                   // default 8, clamped to [1, 25]
+}
+
+message QueryResponse {
+  string answer = 1;
+  string confidence = 2;         // "high" | "medium" | "low"
+  repeated Source sources = 3;
+  google.protobuf.Struct stats = 4;
+  string thread_id = 5;
+}
+
+// One streamed event. Exactly one of the oneof cases is set per message.
+message QueryStreamEvent {
+  oneof event {
+    string thread_id = 1;        // emitted first
+    SourceList sources = 2;      // emitted once, after thread_id, before tokens
+    string token = 3;            // repeated: incremental answer text
+    Done done = 4;               // terminal (success)
+    StreamError error = 5;       // terminal (mid-stream failure, in-band)
+  }
+}
