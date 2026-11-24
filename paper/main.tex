@@ -13,7 +13,7 @@
 
 \title{Ontology-Typed GraphRAG with an AI-Assisted DevOps Pipeline for Question Answering over Company Email}
 
-% TODO(team): replace names and roll numbers; keep the faculty name the course requires.
+% TODO(team): replace names and roll numbers; keep only YOUR instructor's name (Naveen Singh OR Kiran Khatter) and your group number.
 \author{Group XX: Name1 (Roll No.), Name2 (Roll No.), Name3 (Roll No.), Naveen Singh/Kiran Khatter\\
 School of Engineering \& Technology, BML Munjal University}
 
@@ -28,7 +28,8 @@ Continuous delivery, GitOps, knowledge graphs, large language models, retrieval-
 \end{IEEEkeywords}
 
 % TODO(team): paste the real Overleaf project link.
-\noindent\textbf{Overleaf Project Link:} \url{https://www.overleaf.com/project/...}
+\noindent\textbf{Overleaf Project Link:} \url{https://www.overleaf.com/project/...}\\
+\textbf{Code Repository:} \url{https://github.com/ninadw25/AI_devops_loremind}
 
 \section{Introduction}
 
@@ -405,7 +406,7 @@ Off, keywords & $0.31 \pm 0.06$ & $\mathbf{0.20} \pm 0.04$ & $\mathbf{0.70} \pm 
 \end{figure}
 
 \subsection{Automation pipeline outcomes}
-Table~\ref{tab:testgen} reports the LLM test generator on four modules. Three modules reached 100\% line coverage after one or two attempts and their tests were kept; the fourth produced tests that did not raise coverage after three attempts and was rejected, which is the intended behaviour of the filter. The suite grew from 266 to 307 tests and total coverage from 66\% to 68\%, above the 65\% gate; a fresh run gives 306 passed and 1 skipped. The course-branch pipeline completed lint, tests, scans and build successfully. The Terraform stack went from apply to a working HTTPS site in about five minutes; an end-to-end query through the deployed system returned an answer with ten cited sources in 11 to 17 seconds, and requests without the password received HTTP 401. The instance type (t3.xlarge, 16 GiB) costs roughly US\$4 to \$5 per day in the Mumbai region, and the stack can be destroyed with one command, which made it practical to run the demonstration only when needed and to rebuild it from scratch after the instance had been stopped.
+Table~\ref{tab:testgen} reports the LLM test generator on four modules. Three modules reached 100\% line coverage after one or two attempts and their tests were kept; the fourth produced tests that did not raise coverage after three attempts and was rejected, which is the intended behaviour of the filter. The suite grew from 266 to 307 tests and total coverage from 66\% to 68\%, above the 65\% gate; a fresh run gives 306 passed and 1 skipped. The course-branch pipeline completed lint, tests, scans and build successfully. The Terraform stack went from apply to a working HTTPS site in about five minutes; an end-to-end query through the deployed system returned an answer with ten cited sources in 11 to 17 seconds, and requests without the password received HTTP 401. Memory peaked at 1.2 GiB during a live query, so the instance was cut from a t3.xlarge (US\$4.5 per day) to a t3.large (\$2.4 per day), and the stack can be destroyed with one command, which made it practical to run the demonstration only when needed and to rebuild it from scratch after the instance had been stopped.
 
 \begin{table}[t]
 \centering
@@ -432,20 +433,19 @@ The results answer a practical question for any organisation that wants an assis
 
 The study has clear limitations. It covers one organisation and 15 to 20 questions per family, so several intervals are wide. Each configuration was run once, so our error bars reflect the choice of questions, not the run-to-run variation of the LLM analysis, which is not yet measured. Ground truth comes from the same LLM-extracted graph, so an extraction error counts as truth and the templates favour the structure the graph encodes; Test B, whose labels come from raw email, partly offsets this. We measure retrieval, not the quality of the written answer, and BM25 was inactive in every run.
 
-\emph{Ethics.} The data is a client's private email, used with consent. No customer text is committed to the repository: questions are regenerated from the graph, every node carries access scopes that the engine enforces inside each query, phone numbers are redacted before synthesis, and the deployed demo sits behind a password and stores its secrets encrypted.
+\emph{Ethics.} The data is a client's private email, used with consent. No email text, extracted graph or per-question output is in the code repository: questions are regenerated from the graph, every node carries access scopes that the engine enforces inside each query, phone numbers are redacted before synthesis, and the deployed demo sits behind a password and stores its secrets encrypted.
 
 \section{Conclusion and Future Work}
 
 For RQ1, retrieval over an ontology-typed email graph raises node recall@10 on relationship questions from 0.14 to 0.40 (+0.26, 95\% CI [+0.13, +0.40]) but loses on single-email lookups (hit@10 0.40 against 0.75) and is about twenty times slower. For RQ2, LLM query analysis causes both the largest gain (+0.32 on person-and-topic questions) and the lookup loss ($-0.23$), and the cross-encoder recovers +0.27 on lookups only when that analysis is on. The surrounding workflow, a coverage-gated CI stage fed by a filtered LLM test generator and a one-command infrastructure-as-code deployment, made the system testable and shippable by a small team: three modules reached full line coverage, a fourth was correctly rejected, and the whole system could be recreated on AWS in about five minutes. For an organisation, the practical message is to treat relational questions and lookups as different products, and to measure each component before trusting it. Three directions follow. First, add a question router and measure whether it keeps the relational gain while restoring lookup accuracy. Second, test personalised PageRank on person hubs. Third, add an answer-quality score with human labels on a sample, and rerun every configuration several times to report its variance.
 
 \section*{Code Availability}
-% TODO(team): the GitLab instance is private; push the course branch to a repository the faculty can open.
-Source code, branch \texttt{course/aidevops-midterm}:\\
-\url{https://gitlab.loremind.in/loremind-forge/ai-services/lore-engine}
+Code, evaluation scripts, CI pipeline, Terraform and this paper (private; faculty have access):\\
+\url{https://github.com/ninadw25/AI_devops_loremind}
 
 \section*{AI-Use Declaration}
-% TODO(team): state truthfully which AI tools you used and for what, in your own words.
-LLMs are components of the system described here (triple extraction, query analysis, answer synthesis, question and test generation). In preparing the code and this paper the team used [tool names] for [purposes]; all results were produced by running the code, and all text, figures and references were checked by the authors.
+% TODO(team): keep this accurate. Add any other tools you used (e.g. ChatGPT, Grammarly) and remove anything you did not use.
+LLMs are components of the system described here (triple extraction, query analysis, answer synthesis, question and test generation). The team used Claude (Anthropic), through Claude Code, to write code and evaluation scripts, draw figures, and draft and edit text. All results come from running the code; the authors rewrote the text and checked every number and reference.
 
 \section*{Contribution Statement}
 % TODO(team): one line per member.
